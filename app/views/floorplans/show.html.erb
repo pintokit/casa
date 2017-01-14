@@ -1,0 +1,21 @@
+<p>
+  <strong>Flat:</strong>
+  <%= @floorplan.flat %>
+</p>
+
+<p>
+  <strong>Layout:</strong>
+  <%= @floorplan.layout_id %>
+</p>
+
+<p>
+  <strong>Windows:</strong>
+  <%= @floorplan.windows %>
+</p>
+
+
+<%= link_to 'Back to Floorplans', floorplans_path, class:'btn btn-block btn-default' %>
+
+<%= link_to edit_floorplan_path(@floorplan), class: 'btn btn-block btn-primary' do %>
+  <span class='glyphicon glyphicon-pencil'></span>
+<% end %>

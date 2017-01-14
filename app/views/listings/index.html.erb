@@ -1,0 +1,27 @@
+<h1>Listings</h1>
+
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th class="text-center">Flat</th>
+      <th class="text-center">Price</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @listings.each do |listing| %>
+      <tr>
+        <td class="text-center"><%= listing.flat %></td>
+        <td class="text-center"><%= number_to_currency(listing.price, precision: 0) %></td>
+        <td class="text-center">
+          <%= link_to listing_path(listing), class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-info-sign"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Listing', new_listing_path, class: 'btn btn-block btn-primary' %>

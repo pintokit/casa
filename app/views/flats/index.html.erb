@@ -1,0 +1,35 @@
+<h1>Flats</h1>
+
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th class="text-center">Bed</th>
+      <th class="text-center">Bath</th>
+      <th class="text-center">Stack</th>
+      <th class="text-center">Floor</th>
+      <th class="text-center">Sqft</th>
+      <th class="text-center">Is active</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @flats.each do |flat| %>
+      <tr>
+        <td class="text-center"><%= flat.bed %></td>
+        <td class="text-center"><%= flat.bath %></td>
+        <td class="text-center"><%= flat.stack %></td>
+        <td class="text-center"><%= flat.floor %></td>
+        <td class="text-center"><%= flat.sqft %></td>
+        <td class="text-center"><%= flat.is_active %></td>
+        <td class="text-center">
+          <%= link_to flat_path(flat), class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-info-sign"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Flat', new_flat_path, class: 'btn btn-block btn-primary' %>

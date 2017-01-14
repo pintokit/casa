@@ -1,0 +1,12 @@
+<%= simple_form_for(@flat) do |f| %>
+  <%= f.error_notification %>
+
+    <%= f.input :bed %>
+    <%= f.input :bath %>
+    <%= f.input :stack %>
+    <%= f.input :floor %>
+    <%= f.input :sqft %>
+    <%= f.input :is_active %>
+
+    <%= f.button :submit, class: 'btn btn-block btn-success' %>
+<% end %>

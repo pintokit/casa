@@ -1,0 +1,9 @@
+<h1>Editing Listing</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back to Listings', listings_path, class:'btn btn-block btn-default' %>
+
+<%= link_to @listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-block btn-danger' do %>
+  <span class='glyphicon glyphicon-trash'></span>
+<% end %>

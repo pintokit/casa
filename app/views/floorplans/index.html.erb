@@ -1,0 +1,29 @@
+<h1>Floorplans</h1>
+
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th class="text-center">Flat</th>
+      <th class="text-center">Layout</th>
+      <th class="text-center">Windows</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @floorplans.each do |floorplan| %>
+      <tr>
+        <td class="text-center"><%= floorplan.flat %></td>
+        <td class="text-center"><%= floorplan.layout_id %></td>
+        <td class="text-center"><%= floorplan.windows %></td>
+        <td class="text-center">
+          <%= link_to floorplan_path(floorplan), class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-info-sign"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Floorplan', new_floorplan_path, class: 'btn btn-block btn-primary' %>
