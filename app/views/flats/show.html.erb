@@ -1,0 +1,36 @@
+<p>
+  <strong>Bed:</strong>
+  <%= @flat.bed %>
+</p>
+
+<p>
+  <strong>Bath:</strong>
+  <%= @flat.bath %>
+</p>
+
+<p>
+  <strong>Suite:</strong>
+  <%= @flat.suite %>
+</p>
+
+<p>
+  <strong>Floor:</strong>
+  <%= @flat.floor %>
+</p>
+
+<p>
+  <strong>Sqft:</strong>
+  <%= @flat.sqft %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @flat.is_active %>
+</p>
+
+
+<%= link_to 'Back to Flats', flats_path, class:'btn btn-block btn-default' %>
+
+<%= link_to edit_flat_path(@flat), class: 'btn btn-block btn-primary' do %>
+  <span class='glyphicon glyphicon-pencil'></span>
+<% end %>
