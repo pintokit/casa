@@ -3,7 +3,7 @@
 one:
   bed: 1
   bath: 1
-  suite: MyString
+  stack: MyString
   floor: MyString
   sqft: 1
   is_active: false
@@ -11,7 +11,7 @@ one:
 two:
   bed: 1
   bath: 1
-  suite: MyString
+  stack: MyString
   floor: MyString
   sqft: 1
   is_active: false

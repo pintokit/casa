@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170114005620) do
   create_table "flats", force: :cascade do |t|
     t.integer  "bed"
     t.integer  "bath"
-    t.string   "suite"
+    t.string   "stack"
     t.string   "floor"
     t.integer  "sqft"
     t.boolean  "is_active"
