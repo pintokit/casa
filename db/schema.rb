@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114004952) do
+ActiveRecord::Schema.define(version: 20170114005620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,5 +35,14 @@ ActiveRecord::Schema.define(version: 20170114004952) do
     t.index ["flat_id"], name: "index_floorplans_on_flat_id", using: :btree
   end
 
+  create_table "listings", force: :cascade do |t|
+    t.integer  "flat_id"
+    t.integer  "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flat_id"], name: "index_listings_on_flat_id", using: :btree
+  end
+
   add_foreign_key "floorplans", "flats"
+  add_foreign_key "listings", "flats"
 end

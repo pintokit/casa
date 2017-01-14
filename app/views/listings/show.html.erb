@@ -1,0 +1,16 @@
+<p>
+  <strong>Flat:</strong>
+  <%= @listing.flat %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @listing.price %>
+</p>
+
+
+<%= link_to 'Back to Listings', listings_path, class:'btn btn-block btn-default' %>
+
+<%= link_to edit_listing_path(@listing), class: 'btn btn-block btn-primary' do %>
+  <span class='glyphicon glyphicon-pencil'></span>
+<% end %>
