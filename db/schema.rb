@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20170114005620) do
   create_table "listings", force: :cascade do |t|
     t.integer  "flat_id"
     t.integer  "price"
-    t.datetime "fetch_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["flat_id"], name: "index_listings_on_flat_id", using: :btree
