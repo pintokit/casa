@@ -1,3 +1,3 @@
 class Floorplan < ApplicationRecord
-  belongs_to :flat
+  has_many :flats
 end

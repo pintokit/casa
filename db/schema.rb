@@ -16,23 +16,23 @@ ActiveRecord::Schema.define(version: 20170114005620) do
   enable_extension "plpgsql"
 
   create_table "flats", force: :cascade do |t|
+    t.integer  "floorplan_id"
     t.integer  "bed"
     t.integer  "bath"
     t.string   "stack"
     t.string   "floor"
     t.integer  "sqft"
     t.boolean  "is_active"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["floorplan_id"], name: "index_flats_on_floorplan_id", using: :btree
   end
 
   create_table "floorplans", force: :cascade do |t|
-    t.integer  "flat_id"
     t.integer  "layout_id"
     t.jsonb    "windows",    default: "{}"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.index ["flat_id"], name: "index_floorplans_on_flat_id", using: :btree
   end
 
   create_table "listings", force: :cascade do |t|
@@ -43,6 +43,6 @@ ActiveRecord::Schema.define(version: 20170114005620) do
     t.index ["flat_id"], name: "index_listings_on_flat_id", using: :btree
   end
 
-  add_foreign_key "floorplans", "flats"
+  add_foreign_key "flats", "floorplans"
   add_foreign_key "listings", "flats"
 end

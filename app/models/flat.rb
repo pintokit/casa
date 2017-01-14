@@ -1,4 +1,4 @@
 class Flat < ApplicationRecord
   has_many :listings
-  has_one :floorplan
+  belongs_to :floorplan
 end
