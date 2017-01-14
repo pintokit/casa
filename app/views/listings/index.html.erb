@@ -13,7 +13,7 @@
     <% @listings.each do |listing| %>
       <tr>
         <td class="text-center"><%= listing.flat %></td>
-        <td class="text-center"><%= listing.price %></td>
+        <td class="text-center"><%= number_to_currency(listing.price, precision: 0) %></td>
         <td class="text-center">
           <%= link_to listing_path(listing), class: 'btn btn-default' do %>
             <span class="glyphicon glyphicon-info-sign"></span>
