@@ -1,0 +1,9 @@
+<%= simple_form_for(@floorplan) do |f| %>
+  <%= f.error_notification %>
+
+    <%= f.association :flat %>
+    <%= f.input :layout_id %>
+    <%= f.input :windows %>
+
+    <%= f.button :submit, class: 'btn btn-block btn-success' %>
+<% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :floorplans
   root "flats#index"
   
   resources :flats
