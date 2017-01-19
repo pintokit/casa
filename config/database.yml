@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: casa_development
+  database: casa_dev
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: casa_production
+  database: casa_pro
   username: casa
   password: <%= ENV['CASA_DATABASE_PASSWORD'] %>
