@@ -4,7 +4,8 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @flat = Flat.find(params[:flat_id])
+    @listings = @flat.listings
   end
 
   # GET /listings/1
