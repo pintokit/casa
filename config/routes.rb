@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "flats#index"
 
-  get "flats/pull"
+  get 'pull', to: 'flats#pull'
 
   resources :flats do
     resources :listings
