@@ -3,12 +3,10 @@
 <table class='table table-hover'>
   <thead>
     <tr>
-      <th class="text-center">Bed</th>
-      <th class="text-center">Bath</th>
-      <th class="text-center">Stack</th>
-      <th class="text-center">Floor</th>
+      <th class="text-center">Flat</th>
+      <th class="text-center">Price</th>
       <th class="text-center">Sqft</th>
-      <th class="text-center">Is active</th>
+      <th class="text-center">Updated</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -16,12 +14,18 @@
   <tbody>
     <% @flats.each do |flat| %>
       <tr>
-        <td class="text-center"><%= flat.bed %></td>
-        <td class="text-center"><%= flat.bath %></td>
-        <td class="text-center"><%= flat.stack %></td>
-        <td class="text-center"><%= flat.floor %></td>
-        <td class="text-center"><%= flat.sqft %></td>
-        <td class="text-center"><%= flat.is_active %></td>
+        <td class="text-center">
+          <%= flat.name %>
+        </td>
+        <td class="text-center">
+          <%= number_to_currency(flat.listings.last.price, precision: 0) %>
+        </td>
+        <td class="text-center">
+          <%= flat.sqft %>
+        </td>
+        <td class="text-center">
+          <%= time_ago_in_words(flat.listings.last.updated_at) %> ago
+        </td>
         <td class="text-center">
           <%= link_to flat_path(flat), class: 'btn btn-default' do %>
             <span class="glyphicon glyphicon-info-sign"></span>
