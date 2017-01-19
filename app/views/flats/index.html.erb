@@ -7,7 +7,7 @@
       <th class="text-center">Price</th>
       <th class="text-center">Sqft</th>
       <th class="text-center">Updated</th>
-      <th colspan="1"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -25,6 +25,11 @@
         </td>
         <td class="text-center">
           <%= time_ago_in_words(flat.listings.last.updated_at) %> ago
+        </td>
+        <td class="text-center">
+          <%= link_to flat.floorplan.layout_path, class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-camera"></span>
+          <% end %>
         </td>
         <td class="text-center">
           <%= link_to flat_path(flat), class: 'btn btn-default' do %>

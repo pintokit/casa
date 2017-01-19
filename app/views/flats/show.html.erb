@@ -11,25 +11,18 @@
 </p>
 
 <p>
-  <strong>Stack:</strong>
-  <%= @flat.stack %>
-</p>
-
-<p>
-  <strong>Floor:</strong>
-  <%= @flat.floor %>
-</p>
-
-<p>
   <strong>Sqft:</strong>
   <%= @flat.sqft %>
 </p>
 
 <p>
-  <strong>Is active:</strong>
-  <%= @flat.is_active %>
+  <strong>Price:</strong>
+  <%= number_to_currency(@flat.listings.last.price, precision: 0) %>
 </p>
 
+<%= link_to @flat.floorplan.layout_path do %>
+ <%= image_tag @flat.floorplan.layout_path %>
+<% end %>
 
 <%= link_to 'Back to Flats', flats_path, class:'btn btn-block btn-default' %>
 

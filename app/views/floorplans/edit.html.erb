@@ -2,6 +2,7 @@
 
 <%= render 'form' %>
 
+<br>
 <%= link_to 'Back to Floorplans', floorplans_path, class:'btn btn-block btn-default' %>
 
 <%= link_to @floorplan, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-block btn-danger' do %>
