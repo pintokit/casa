@@ -2,8 +2,9 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Back to Listings', listings_path, class:'btn btn-block btn-default' %>
+<br>
+<%= link_to 'Back to Listings', flat_listings_path(@listing.flat), class:'btn btn-block btn-default' %>
 
-<%= link_to @listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-block btn-danger' do %>
+<%= link_to [@listing.flat, @listing], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-block btn-danger' do %>
   <span class='glyphicon glyphicon-trash'></span>
 <% end %>
