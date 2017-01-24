@@ -5,7 +5,6 @@
     <tr>
       <th class="text-center">Price</th>
       <th class="text-center">Updated</th>
-      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -16,12 +15,7 @@
           <%= number_to_currency(listing.price, precision: 0) %>
         </td>
         <td class="text-center">
-          <%= time_ago_in_words(listing.updated_at) %> ago
-        </td>
-        <td class="text-center">
-          <%= link_to flat_listing_path(listing.flat, listing), class: 'btn btn-default' do %>
-            <span class="glyphicon glyphicon-info-sign"></span>
-          <% end %>
+          <%= time_ago_in_words(listing.created_at) %> ago
         </td>
       </tr>
     <% end %>
