@@ -10,7 +10,10 @@ class PullController < ApplicationController
 
     case response
     when Net::HTTPRedirection
-      # repeat the request using response['Location']
+      respond_to do |format|
+        format.html { redirect_to listings_url, notice: 'Failed to pull listings because the remote server issued a redirect' }
+        format.json { listings_json }
+      end
     when Net::HTTPSuccess
       flats_json = JSON.parse response.body
       Flat.all.each do |flat|
@@ -52,7 +55,10 @@ class PullController < ApplicationController
       end
     else
       # response code isn't a 200; raise an exception
-      response.error!
+      respond_to do |format|
+        format.html { redirect_to listings_url, notice: response.error! }
+        format.json { listings_json }
+      end
     end
   end
 
