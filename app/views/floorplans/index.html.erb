@@ -3,9 +3,10 @@
 <table class='table table-hover'>
   <thead>
     <tr>
-      <th class="text-center">Flats</th>
+      <th class="text-center">Name</th>
       <th class="text-center">Layout</th>
       <th class="text-center">Windows</th>
+      <th class="text-center">Count</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -13,12 +14,17 @@
   <tbody>
     <% @floorplans.each do |floorplan| %>
       <tr>
-        <td class="text-center"><%= floorplan.flats.count %></td>
         <td class="text-center">
-          <%= image_tag floorplan.layout_path, size: 100 unless floorplan.layout_id.nil? %>
+          <%= floorplan.name %>
+        </td>
+        <td class="text-center">
+          <%= image_tag floorplan.layout_path, class: 'img-thumbnail'%>
         </td>
         <td class="text-center">
           <%= floorplan.studio_windows %>
+        </td>
+        <td class="text-center">
+          <%= floorplan.flats.count %>
         </td>
         <td class="text-center">
           <%= link_to floorplan_path(floorplan), class: 'btn btn-default' do %>
