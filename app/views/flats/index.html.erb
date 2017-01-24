@@ -14,7 +14,7 @@
 
   <tbody>
     <% @flats.each do |flat| %>
-      <tr>
+      <tr class="<% if !flat.is_active %>inactive<% end %>">
         <td class="text-center">
           <%= flat.name %>
         </td>
@@ -30,7 +30,7 @@
           <%= flat.floorplan.studio_windows %>
         </td>
         <td class="text-center">
-          <%= time_ago_in_words(flat.listings.last.updated_at) %> ago
+          <%= time_ago_in_words(flat.listings.last.created_at) %> ago
         </td>
         <td class="text-center">
           <%= link_to flat.floorplan.layout_path, class: 'btn btn-default' do %>
