@@ -1,10 +1,10 @@
-<h1>Listings</h1>
+<% heading "#{@flat.name} Rent History" %>
 
 <table class='table table-hover'>
   <thead>
     <tr>
-      <th class="text-center">Flat</th>
       <th class="text-center">Price</th>
+      <th class="text-center">Updated</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -12,10 +12,14 @@
   <tbody>
     <% @listings.each do |listing| %>
       <tr>
-        <td class="text-center"><%= listing.flat %></td>
-        <td class="text-center"><%= number_to_currency(listing.price, precision: 0) %></td>
         <td class="text-center">
-          <%= link_to listing_path(listing), class: 'btn btn-default' do %>
+          <%= number_to_currency(listing.price, precision: 0) %>
+        </td>
+        <td class="text-center">
+          <%= time_ago_in_words(listing.updated_at) %> ago
+        </td>
+        <td class="text-center">
+          <%= link_to flat_listing_path(listing.flat, listing), class: 'btn btn-default' do %>
             <span class="glyphicon glyphicon-info-sign"></span>
           <% end %>
         </td>
@@ -23,5 +27,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New Listing', new_listing_path, class: 'btn btn-block btn-primary' %>

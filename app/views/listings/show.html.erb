@@ -1,7 +1,4 @@
-<p>
-  <strong>Flat:</strong>
-  <%= @listing.flat %>
-</p>
+<% heading @listing.flat.name %>
 
 <p>
   <strong>Price:</strong>
@@ -9,8 +6,8 @@
 </p>
 
 
-<%= link_to 'Back to Listings', listings_path, class:'btn btn-block btn-default' %>
+<%= link_to 'Back to Listings', flat_listings_path(@listing.flat), class:'btn btn-block btn-default' %>
 
-<%= link_to edit_listing_path(@listing), class: 'btn btn-block btn-primary' do %>
+<%= link_to edit_flat_listing_path(@listing.flat, @listing), class: 'btn btn-block btn-primary' do %>
   <span class='glyphicon glyphicon-pencil'></span>
 <% end %>

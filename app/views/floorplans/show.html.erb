@@ -1,16 +1,13 @@
-<p>
-  <strong>Flat:</strong>
-  <%= @floorplan.flat %>
-</p>
+<% heading "#{@floorplan.layout_id}" %>
 
 <p>
-  <strong>Layout:</strong>
-  <%= @floorplan.layout_id %>
+  <strong>Flats:</strong>
+  <%= @floorplan.flats.count %>
 </p>
 
 <p>
   <strong>Windows:</strong>
-  <%= @floorplan.windows %>
+  <%= @floorplan.studio_windows %>
 </p>
 
 

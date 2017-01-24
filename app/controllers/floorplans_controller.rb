@@ -12,11 +12,6 @@ class FloorplansController < ApplicationController
   def show
   end
 
-  # GET /floorplans/new
-  def new
-    @floorplan = Floorplan.new
-  end
-
   # GET /floorplans/1/edit
   def edit
   end
@@ -69,6 +64,6 @@ class FloorplansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def floorplan_params
-      params.require(:floorplan).permit(:layout_id, :windows)
+      params.require(:floorplan).permit(:layout_id, :windows, :left_window, :middle_window, :right_window)
     end
 end

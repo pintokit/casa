@@ -1,9 +1,10 @@
 <%= simple_form_for(@floorplan) do |f| %>
   <%= f.error_notification %>
 
-    <%= f.association :flat %>
     <%= f.input :layout_id %>
-    <%= f.input :windows %>
+    <%= f.input :left_window, as: :boolean %>
+    <%= f.input :middle_window, as: :boolean %>
+    <%= f.input :right_window, as: :boolean %>
 
     <%= f.button :submit, class: 'btn btn-block btn-success' %>
 <% end %>

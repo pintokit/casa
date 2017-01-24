@@ -7,17 +7,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-       <!-- link_to root_url do
-        image_tag 'logo.png', class:'navbar-brand'
-       end -->
+       <%= link_to root_url do %>
+        <%= image_tag 'nav_icon.png', class:'navbar-brand' %>
+       <% end %>
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-6">
       <ul class="nav navbar-nav">
-         <!-- if user_signed_in?
-          <li>LOGGED IN NAVBAR VIEW</li>
-         else
-            <li>LOGGED OUT NAVBAR VIEW</li>
-         end -->
+        <li><%= link_to 'Flats', flats_path %></li>
+        <li><%= link_to 'Floorplans', floorplans_path %></li>
+        <li><%= link_to 'NEMA', "https://www.rentnema.com/pdf/FloorPlatesALL.pdf" %></li>
       </ul>
     </div>
   </div>
