@@ -8,20 +8,6 @@ class ListingsController < ApplicationController
     @listings = @flat.listings
   end
 
-  # GET /listings/1
-  # GET /listings/1.json
-  def show
-  end
-
-  # GET /listings/new
-  def new
-    @listing = Listing.new
-  end
-
-  # GET /listings/1/edit
-  def edit
-  end
-
   # POST /listings
   # POST /listings.json
   def create

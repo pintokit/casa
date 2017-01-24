@@ -4,12 +4,21 @@ class FloorplansController < ApplicationController
   # GET /floorplans
   # GET /floorplans.json
   def index
-    @floorplans = Floorplan.all
+    @floorplans = Floorplan.all.order(:layout_id)
   end
 
   # GET /floorplans/1
   # GET /floorplans/1.json
   def show
+    @flats = []
+    @floorplan.flats.each do |flat|
+      @flats.push(flat.name)
+    end
+  end
+
+  # GET /floorplans/new
+  def new
+    @floorplan = Floorplan.new
   end
 
   # GET /floorplans/1/edit

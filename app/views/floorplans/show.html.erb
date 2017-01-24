@@ -1,8 +1,13 @@
-<% heading "#{@floorplan.layout_id}" %>
+<% heading "#{@floorplan.name}" %>
+
+<p>
+  <strong>ID:</strong>
+  <%= @floorplan.layout_id %>
+</p>
 
 <p>
   <strong>Flats:</strong>
-  <%= @floorplan.flats.count %>
+  <%= @flats %>
 </p>
 
 <p>
@@ -10,6 +15,10 @@
   <%= @floorplan.studio_windows %>
 </p>
 
+<p>
+  <strong>Layout:</strong>
+  <%= image_tag @floorplan.layout_path, class: 'img-thumbnail'%>
+</p>
 
 <%= link_to 'Back to Floorplans', floorplans_path, class:'btn btn-block btn-default' %>
 

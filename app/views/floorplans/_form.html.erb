@@ -1,7 +1,7 @@
 <%= simple_form_for(@floorplan) do |f| %>
   <%= f.error_notification %>
 
-    <%= f.input :layout_id %>
+    <%= f.input :layout_id, label: 'ID' %>
     <%= f.input :left_window, as: :boolean %>
     <%= f.input :middle_window, as: :boolean %>
     <%= f.input :right_window, as: :boolean %>

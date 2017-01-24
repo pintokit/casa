@@ -1,8 +1,0 @@
-<%= simple_form_for [@listing.flat, @listing] do |f| %>
-  <%= f.error_notification %>
-
-    <%= f.association :flat %>
-    <%= f.input :price %>
-
-    <%= f.button :submit, class: 'btn btn-block btn-success' %>
-<% end %>

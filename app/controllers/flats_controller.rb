@@ -12,11 +12,6 @@ class FlatsController < ApplicationController
   def show
   end
 
-  # GET /flats/new
-  def new
-    @flat = Flat.new
-  end
-
   # GET /flats/1/edit
   def edit
   end
