@@ -17,7 +17,9 @@
         <td class="text-center">
           <%= image_tag floorplan.layout_path, size: 100 unless floorplan.layout_id.nil? %>
         </td>
-        <td class="text-center"><%= floorplan.windows %></td>
+        <td class="text-center">
+          <%= floorplan.studio_windows %>
+        </td>
         <td class="text-center">
           <%= link_to floorplan_path(floorplan), class: 'btn btn-default' do %>
             <span class="glyphicon glyphicon-info-sign"></span>
