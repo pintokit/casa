@@ -16,6 +16,11 @@
 </p>
 
 <p>
+  <strong>Windows:</strong>
+  <%= @flat.floorplan.studio_windows %>
+</p>
+
+<p>
   <strong>Price:</strong>
   <%= number_to_currency(@flat.listings.last.price, precision: 0) %>
 </p>
