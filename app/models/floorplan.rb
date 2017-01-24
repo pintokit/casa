@@ -3,6 +3,20 @@ class Floorplan < ApplicationRecord
   serialize :windows, HashSerializer
   store_accessor :windows, :left_window, :middle_window, :right_window
 
+  # convert layout_ids to a name
+  def alph(x)
+    array = ("AA".."ZZ").to_a
+    return array[x]
+  end
+
+  def name
+    if layout_id.nil?
+      "No Layout"
+    else
+      "#{alph(layout_id.modulo(26*26))}: #{id}"
+    end
+  end
+
   def studio_windows
     output = ""
 
