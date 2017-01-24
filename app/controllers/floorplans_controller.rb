@@ -12,11 +12,6 @@ class FloorplansController < ApplicationController
   def show
   end
 
-  # GET /floorplans/new
-  def new
-    @floorplan = Floorplan.new
-  end
-
   # GET /floorplans/1/edit
   def edit
   end
