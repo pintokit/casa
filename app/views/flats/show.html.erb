@@ -29,6 +29,8 @@
  <%= image_tag @flat.floorplan.layout_path %>
 <% end %>
 
+<%= link_to 'History', flat_listings_path(@flat), class:'btn btn-block btn-default' %>
+
 <%= link_to 'Back to Flats', flats_path, class:'btn btn-block btn-default' %>
 
 <%= link_to edit_flat_path(@flat), class: 'btn btn-block btn-primary' do %>
