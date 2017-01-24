@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20170114005620) do
 
   create_table "floorplans", force: :cascade do |t|
     t.integer  "layout_id"
-    t.jsonb    "windows",    default: "{}"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.jsonb    "windows"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "listings", force: :cascade do |t|
