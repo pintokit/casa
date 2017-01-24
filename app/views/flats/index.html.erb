@@ -19,7 +19,9 @@
           <%= flat.name %>
         </td>
         <td class="text-center">
-          <%= number_to_currency(flat.listings.last.price, precision: 0) %>
+          <%= link_to flat_listings_path(flat) do %>
+           <%= number_to_currency(flat.listings.last.price, precision: 0) %>
+          <% end %>
         </td>
         <td class="text-center">
           <%= flat.sqft %>
