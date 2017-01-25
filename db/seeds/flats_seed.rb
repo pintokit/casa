@@ -5,10 +5,10 @@ flats_list = [
 flats_list.each do |floor_plan, bed, bath, stack, floor, sqft, is_active, flat_created_at, price, listing_created_at|
 
   if floor_plan.nil?
-    flat = Flat.find_or_create_by!(floorplan_id: nil, bed: bed, bath: bath, stack: stack, floor: floor.to_i, sqft: sqft, is_active: is_active, created_at: flat_created_at)
+    flat = Flat.find_or_create_by!(bed: bed, bath: bath, stack: stack, floor: floor.to_i, sqft: sqft, is_active: is_active, created_at: flat_created_at)
   else
     layout = Floorplan.find_or_create_by!(layout_id: floor_plan)
-    
+
     flat = Flat.find_or_create_by!(floorplan_id: layout.id, bed: bed, bath: bath, stack: stack, floor: floor.to_i, sqft: sqft, is_active: is_active, created_at: flat_created_at)
   end
 
