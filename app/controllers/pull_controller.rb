@@ -19,16 +19,16 @@ class PullController < ApplicationController
 
       flats_json = JSON.parse response.body
       @units = flats_json['units']
-      @units.each do |unit|
-        if unit['fi'].nil?
-          flat = Flat.find_or_create_by!(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: 0)
-        else
-          floorplan = Floorplan.find_or_create_by!(layout_id: unit['fi'])
 
-          flat = Flat.find_or_create_by!(floorplan_id: floorplan.id, floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: 0) # TODO: 0 for now, use real number
-        end
+      @units.each do |unit|
+        floorplan = Floorplan.find_or_create_by!(layout_id: unit['fi'])
+
+        flat = Flat.find_or_create_by!(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: 0) # TODO: 0 for now, use real number
 
         flat.update! is_active: true
+        unless flat.floorplan.present?
+          flat.update! floorplan: floorplan
+        end
 
         current_price = unit['rent'].delete(',').to_i
         history = flat.listings
