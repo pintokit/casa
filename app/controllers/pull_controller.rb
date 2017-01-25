@@ -26,12 +26,13 @@ class PullController < ApplicationController
         end
         flat.save
 
-        flat.update!(is_active: true)
+        flat.update! is_active: true
 
         current_price = unit['rent'].delete(',').to_i
         history = flat.listings
         last_listing = history.last
-        unless history.count > 0 && last_listing[:price] == current_price
+
+        unless !history.empty? && last_listing[:price] == current_price
           listing = Listing.new(flat_id: flat.id, price: current_price)
           listing.save
         end
