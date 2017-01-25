@@ -17,19 +17,18 @@ class PullController < ApplicationController
     when Net::HTTPSuccess
       flats_json = JSON.parse response.body
       Flat.all.each do |flat|
-        flat.is_active = false
-        flat.save
+        flat.update!(is_active: false)
       end
       @units = flats_json['units']
       @units.each do |unit|
         floorplan = Floorplan.find_or_create_by!(layout_id: unit['fi'])
         flat = Flat.find_or_create_by!(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: 0) # TODO: 0 for now, use real number
 
-        flat.is_active = true
-        unless flat.floorplan.present?
-          flat.floorplan = floorplan
         end
         flat.save
+
+        flat.update!(is_active: true)
+
         current_price = unit['rent'].delete(',').to_i
         history = flat.listings
         last_listing = history.last
