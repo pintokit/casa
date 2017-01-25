@@ -10,10 +10,6 @@ class FloorplansController < ApplicationController
   # GET /floorplans/1
   # GET /floorplans/1.json
   def show
-    @flats = []
-    @floorplan.flats.each do |flat|
-      @flats.push(flat.name)
-    end
   end
 
   # GET /floorplans/new

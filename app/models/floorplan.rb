@@ -17,6 +17,16 @@ class Floorplan < ApplicationRecord
     end
   end
 
+  def assigned_flats
+    output = []
+    flats.each do |flat|
+      output.push(flat.name)
+    end
+    unless output.empty?
+      return output
+    end
+  end
+
   def studio_windows
     output = ""
 

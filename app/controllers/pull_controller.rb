@@ -27,7 +27,7 @@ class PullController < ApplicationController
         last_listing = flat.listings.last
 
         if flat.listings.empty? || last_listing.price =! current_price
-          Listing.create(flat: flat, price: current_price)
+          Listing.create!(flat: flat, price: current_price)
         end
 
         flat.update! is_active: true
