@@ -22,7 +22,6 @@ class PullController < ApplicationController
 
       @units.each do |unit|
         floorplan = Floorplan.find_or_create_by!(layout_id: unit['fi'])
-
         flat = Flat.find_or_create_by!(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: 0) # TODO: 0 for now, use real number
 
         flat.update! is_active: true
@@ -35,8 +34,7 @@ class PullController < ApplicationController
         last_listing = history.last
 
         unless !history.empty? && last_listing[:price] == current_price
-          listing = Listing.new(flat_id: flat.id, price: current_price)
-          listing.save
+          Listing.create(flat: flat, price: current_price)
         end
       end
       respond_to do |format|
@@ -55,6 +53,6 @@ class PullController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def pull_params
-      params.require(:flat).permit(:bed, :bath, :stack, :floor, :sqft, :is_active, :floorplan_id)
+      params.require(:flat).permit(:floorplan, :bed, :bath, :stack, :floor, :sqft, :is_active)
     end
 end
