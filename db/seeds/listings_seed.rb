@@ -10,6 +10,6 @@ flats_list.each do |floorplan_identifier, bed, bath, stack, floor, sqft, is_acti
 
     flat.update! floorplan: floorplan
   end
-  
+
   Listing.find_or_create_by!(flat: flat, price: price, created_at: listing_created_at)
 end
