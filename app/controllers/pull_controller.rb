@@ -15,10 +15,9 @@ class PullController < ApplicationController
         format.json { listings_json }
       end
     when Net::HTTPSuccess
+      Flat.update_all is_active: false
+
       flats_json = JSON.parse response.body
-      Flat.all.each do |flat|
-        flat.update!(is_active: false)
-      end
       @units = flats_json['units']
       @units.each do |unit|
         floorplan = Floorplan.find_or_create_by!(layout_id: unit['fi'])
