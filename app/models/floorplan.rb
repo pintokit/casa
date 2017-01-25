@@ -1,6 +1,5 @@
 class Floorplan < ApplicationRecord
   has_many :flats
-  serialize :windows, HashSerializer
   store_accessor :windows, :left_window, :middle_window, :right_window
 
   # convert layout_ids to a name
@@ -30,15 +29,15 @@ class Floorplan < ApplicationRecord
   def studio_windows
     output = ""
 
-    if windows.blank?
+    if windows.nil?
       output = "❔❔❔"
-    end
-
-    windows.each do |window, position|
-      if position == "0"
-        output.concat("⬜️")
-      elsif position == "1"
-        output.concat("🖼")
+    else
+      windows.each do |window, position|
+        if position == "0"
+          output.concat("⬜️")
+        elsif position == "1"
+          output.concat("🖼")
+        end
       end
     end
 
