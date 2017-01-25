@@ -22,16 +22,14 @@ class PullController < ApplicationController
       end
       @units = flats_json['units']
       @units.each do |unit|
-          flat = flat.first
-          flat.is_active = true
-          unless flat.floorplan.present?
-            flat.floorplan = floorplan
-          end
-          flat.save
         floorplan = Floorplan.find_or_create_by!(layout_id: unit['fi'])
         flat = Flat.find_or_create_by!(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: 0) # TODO: 0 for now, use real number
 
+        flat.is_active = true
+        unless flat.floorplan.present?
+          flat.floorplan = floorplan
         end
+        flat.save
         current_price = unit['rent'].delete(',').to_i
         history = flat.listings
         last_listing = history.last
