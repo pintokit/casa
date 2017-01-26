@@ -33,11 +33,11 @@ class Floorplan < ApplicationRecord
     if windows.nil?
       output = "❔❔❔"
     else
-      windows.each do |window, position|
-        if position == "0"
-          output.concat("⬜️")
-        elsif position == "1"
+      windows.each_value do |window|
+        if window == "1"
           output.concat("🖼")
+        else
+          output.concat("⬜️")
         end
       end
     end
