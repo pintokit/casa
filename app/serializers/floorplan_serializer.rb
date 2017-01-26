@@ -1,3 +1,4 @@
 class FloorplanSerializer < ActiveModel::Serializer
-  attributes :left_window, :middle_window, :right_window
+  has_many :flats
+  attributes :windows, :left_window, :middle_window, :right_window
 end

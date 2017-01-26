@@ -1,5 +1,6 @@
 class Floorplan < ApplicationRecord
   has_many :flats
+  serialize :windows
   store_accessor :windows, :left_window, :middle_window, :right_window
 
   # convert layout_ids to a name
