@@ -5,11 +5,13 @@ class FloorplansController < ApplicationController
   # GET /floorplans.json
   def index
     @floorplans = Floorplan.all.order(:layout_id)
+    render_html_or_json(@floorplans)
   end
 
   # GET /floorplans/1
   # GET /floorplans/1.json
   def show
+    render_html_or_json(@floorplan)
   end
 
   # GET /floorplans/new
