@@ -27,14 +27,16 @@
           <%= flat.sqft %>
         </td>
         <td class="text-center">
-          <%= flat.floorplan.studio_windows %>
+          <%= flat.floorplan.studio_windows unless flat.floorplan.nil? %>
         </td>
         <td class="text-center">
           <%= time_ago_in_words(flat.listings.last.created_at) %> ago
         </td>
         <td>
-          <%= link_to flat.floorplan.layout_path, class: 'btn btn-default' do %>
-            <span class="glyphicon glyphicon-camera"></span>
+          <% unless flat.floorplan.nil? %>
+            <%= link_to flat.floorplan.layout_path, class: 'btn btn-default' do %>
+              <span class="glyphicon glyphicon-camera"></span>
+            <% end %>
           <% end %>
         </td>
         <td>

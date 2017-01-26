@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
   def index
     @flat = Flat.find(params[:flat_id])
     @listings = @flat.listings
+    render_html_or_json(@listings)
   end
 
   # POST /listings
@@ -56,6 +57,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:flat_id, :price)
+      params.require(:listing).permit(:flat, :price)
     end
 end

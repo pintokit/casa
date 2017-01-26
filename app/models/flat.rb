@@ -1,6 +1,6 @@
 class Flat < ApplicationRecord
   has_many :listings
-  belongs_to :floorplan
+  belongs_to :floorplan, optional: true
 
   def name
     floor + stack

@@ -15,38 +15,24 @@ class PullController < ApplicationController
         format.json { listings_json }
       end
     when Net::HTTPSuccess
+      Flat.update_all is_active: false
+
       flats_json = JSON.parse response.body
-      Flat.all.each do |flat|
-        flat.is_active = false
-        flat.save
-      end
       @units = flats_json['units']
+
       @units.each do |unit|
-        floorplan = Floorplan.where(layout_id: unit['fi'])
-        unless floorplan.count > 0
-          floorplan = Floorplan.new(layout_id: unit['fi'])
-          floorplan.save
-        else
-          floorplan = floorplan.first
-        end
-        flat = Flat.where(floor: unit['uf'], stack: unit['un'])
-        unless flat.count > 0
-          flat = Flat.new(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], floorplan_id: floorplan.id, bath: unit['bathType'], bed: 0, is_active: true) # TODO: 0 for now, use real number
-          flat.save
-        else
-          flat = flat.first
-          flat.is_active = true
-          unless flat.floorplan.present?
-            flat.floorplan = floorplan
-          end
-          flat.save
-        end
+        flat = Flat.find_or_create_by!(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: 0) # TODO: 0 for now, use real number
+        floorplan = Floorplan.find_or_create_by!(layout_id: unit['fi'])
         current_price = unit['rent'].delete(',').to_i
-        history = flat.listings
-        last_listing = history.last
-        unless history.count > 0 && last_listing[:price] == current_price
-          listing = Listing.new(flat_id: flat.id, price: current_price)
-          listing.save
+        last_listing = flat.listings.last
+
+        if flat.listings.empty? || last_listing.price =! current_price
+          Listing.create!(flat: flat, price: current_price)
+        end
+
+        flat.update! is_active: true
+        unless flat.floorplan.present?
+          flat.update! floorplan: floorplan
         end
       end
       respond_to do |format|
@@ -65,6 +51,6 @@ class PullController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def pull_params
-      params.require(:flat).permit(:bed, :bath, :stack, :floor, :sqft, :is_active, :floorplan_id)
+      params.require(:flat).permit(:floorplan, :bed, :bath, :stack, :floor, :sqft, :is_active)
     end
 end

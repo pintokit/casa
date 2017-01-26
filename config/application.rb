@@ -18,7 +18,8 @@ Bundler.require(*Rails.groups)
 
 module Casa
   class Application < Rails::Application
-    
+    ActiveModelSerializers.config.adapter = :json_api
+
     # Sets Rails to log to stdout, prints SQL queries
     logger = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter

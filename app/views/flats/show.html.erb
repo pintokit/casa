@@ -2,7 +2,7 @@
 
 <p>
   <strong>Floorplan:</strong>
-  <%= @flat.floorplan.name %>
+  <%= @flat.floorplan.name unless @flat.floorplan.nil? %>
 </p>
 
 <p>
@@ -12,7 +12,7 @@
 
 <p>
   <strong>Windows:</strong>
-  <%= @flat.floorplan.studio_windows %>
+  <%= @flat.floorplan.studio_windows unless @flat.floorplan.nil? %>
 </p>
 
 <p>
@@ -20,8 +20,10 @@
   <%= number_to_currency(@flat.listings.last.price, precision: 0) %>
 </p>
 
-<%= link_to @flat.floorplan.layout_path do %>
- <%= image_tag @flat.floorplan.layout_path %>
+<% unless @flat.floorplan.nil? %>
+  <%= link_to @flat.floorplan.layout_path do %>
+   <%= image_tag @flat.floorplan.layout_path %>
+  <% end %>
 <% end %>
 
 <%= link_to 'History', flat_listings_path(@flat), class:'btn btn-block btn-default' %>
