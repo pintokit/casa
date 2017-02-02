@@ -25,6 +25,8 @@ gem 'coffee-rails'
 
 # Rails forms made easy
 gem 'simple_form'
+gem 'chartjs-ror'
+gem 'groupdate'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks'
