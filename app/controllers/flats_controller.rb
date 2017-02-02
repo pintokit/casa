@@ -5,13 +5,11 @@ class FlatsController < ApplicationController
   # GET /flats.json
   def index
     @flats = Flat.all
-    render_html_or_json(@flats)
   end
 
   # GET /flats/1
   # GET /flats/1.json
   def show
-    render_html_or_json(@flat)
   end
 
   # GET /flats/1/edit
