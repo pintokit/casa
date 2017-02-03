@@ -10,7 +10,6 @@ class ListingsController < ApplicationController
 
     price_query = "SELECT #{week_range} AS created_at, listings.flat_id, avg(listings.price) AS avg_price FROM listings WHERE listings.flat_id = #{@flat.id} AND listings.price > 0 GROUP BY listings.flat_id, #{week_range} ORDER BY created_at ASC;"
     @results = Listing.connection.execute(price_query, :skip_logging)
-    render_html_or_json(@listings)
   end
 
   # POST /listings
