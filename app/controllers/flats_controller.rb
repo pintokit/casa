@@ -4,7 +4,7 @@ class FlatsController < ApplicationController
   # GET /flats
   # GET /flats.json
   def index
-    @flats = Flat.all.order(is_active: :desc)
+    @flats = Flat.all
     render_html_or_json(@flats)
   end
 
