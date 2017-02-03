@@ -3,12 +3,15 @@ source 'https://rubygems.org'
 ruby '2.4.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
-# Use postgresql as the database for Active Record
-gem 'pg'
 # Use Puma as the app server
 gem 'puma'
+
+# Use postgresql as the database for Active Record
+gem 'pg'
 # Use Redis adapter to run Action Cable in production
 gem 'redis'
+# Serialize your ActiveRecord objects into the desired response JSON
+gem 'active_model_serializers'
 
 # Use Font Awesome Rails for Font Awesome icons
 gem 'font-awesome-rails'
@@ -20,18 +23,14 @@ gem 'sass-rails'
 gem 'jquery-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails'
 
 # Rails forms made easy
 gem 'simple_form'
+# Simplifies using Chart.js in Rails views
 gem 'chartjs-ror'
-gem 'groupdate'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks'
-# Serialize your ActiveRecord objects into the desired response JSON
-gem 'active_model_serializers'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
