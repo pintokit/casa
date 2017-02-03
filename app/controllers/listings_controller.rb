@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @flat = Flat.find(params[:flat_id])
-    @listings = @flat.listings
+    @listings = @flat.listings.last(10)
     render_html_or_json(@listings)
   end
 
