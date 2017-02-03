@@ -1,18 +1,33 @@
 <% heading "#{@flat.name} Rent History" %>
 
-<% @data = {
-  labels: @results.map {|result| time_ago_in_words(result['created_at'])},
+<%
+@data = {
   datasets: [
     {
-      label: "avg price per week",
+      label: "avg price per recorded week",
       backgroundColor: "rgba(54, 162, 235, 0.2)",
       borderColor: "rgba(54, 162, 235, 1)",
-      data: @results.map {|result| result['avg_price']}
+      pointRadius: 5,
+      pointBorderWidth: 3,
+      data: @results.map do |result|
+        {
+          'x': result['created_at'].to_time.to_i,
+          'y': result['avg_price']
+        }
+      end
     }
   ]
+}
+@options = {
+  showLines: false,
+  scales: {
+    xAxes: [{
+      display: false
+    }]
+  }
 } %>
 <center>
-  <%= line_chart @data %>
+  <%= scatter_chart @data, @options %>
 </center>
 
 <table class='table table-hover'>
