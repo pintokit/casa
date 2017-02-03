@@ -1,0 +1,35 @@
+<% @flats.each do |flat| %>
+  <% unless flat.is_active %>
+    <tr class="inactive">
+      <td class="text-center">
+        <%= flat.name %>
+      </td>
+      <td class="text-center">
+        <%= link_to flat_listings_path(flat) do %>
+         <%= number_to_currency(flat.listings.last.price, precision: 0) %>
+        <% end %>
+      </td>
+      <td class="text-center">
+        <%= flat.sqft %>
+      </td>
+      <td class="text-center">
+        <%= flat.floorplan.studio_windows unless flat.floorplan.nil? %>
+      </td>
+      <td class="text-center">
+        <%= time_ago_in_words(flat.listings.last.created_at) %> ago
+      </td>
+      <td>
+        <% unless flat.floorplan.nil? %>
+          <%= link_to flat.floorplan.layout_path, class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-camera"></span>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to flat_path(flat), class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-info-sign"></span>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>
