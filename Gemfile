@@ -31,6 +31,8 @@ gem 'chartjs-ror'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks'
+# Instrument your Ruby App and send the data to the Skylight servers
+gem 'skylight'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
