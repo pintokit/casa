@@ -26,7 +26,7 @@ class PullController < ApplicationController
         current_price = unit['rent'].delete(',').to_i
         last_listing = flat.listings.last
 
-        if flat.listings.empty? || last_listing.price =! current_price
+        if flat.listings.empty? || last_listing.price != current_price
           Listing.create!(flat: flat, price: current_price)
         end
 
