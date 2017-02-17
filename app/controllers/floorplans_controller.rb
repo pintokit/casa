@@ -2,13 +2,11 @@ class FloorplansController < ApplicationController
   before_action :set_floorplan, only: [:show, :edit, :update, :destroy]
 
   # GET /floorplans
-  # GET /floorplans.json
   def index
     @floorplans = Floorplan.all.order(:layout_id)
   end
 
   # GET /floorplans/1
-  # GET /floorplans/1.json
   def show
   end
 
@@ -22,7 +20,6 @@ class FloorplansController < ApplicationController
   end
 
   # POST /floorplans
-  # POST /floorplans.json
   def create
     @floorplan = Floorplan.new(floorplan_params)
 
@@ -38,7 +35,6 @@ class FloorplansController < ApplicationController
   end
 
   # PATCH/PUT /floorplans/1
-  # PATCH/PUT /floorplans/1.json
   def update
     respond_to do |format|
       if @floorplan.update(floorplan_params)
@@ -52,7 +48,6 @@ class FloorplansController < ApplicationController
   end
 
   # DELETE /floorplans/1
-  # DELETE /floorplans/1.json
   def destroy
     @floorplan.destroy
     respond_to do |format|

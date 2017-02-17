@@ -1,61 +1,19 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_flat, only: :index
 
-  # GET /listings
-  # GET /listings.json
+  # GET /flats/:flat_id/listings
   def index
-    @flat = Flat.find(params[:flat_id])
-    @listings = @flat.listings
+    @listings = @flat.listings.last(10)
+    
     week_range = "(DATE_TRUNC('week', (created_at::timestamptz - INTERVAL '6 day' - INTERVAL '0 second') AT TIME ZONE 'Etc/UTC') + INTERVAL '6 day' + INTERVAL '0 second') AT TIME ZONE 'Etc/UTC'"
-
     price_query = "SELECT #{week_range} AS created_at, listings.flat_id, avg(listings.price) AS avg_price FROM listings WHERE listings.flat_id = #{@flat.id} AND listings.price > 0 GROUP BY listings.flat_id, #{week_range} ORDER BY created_at ASC;"
     @results = Listing.connection.execute(price_query, :skip_logging)
   end
 
-  # POST /listings
-  # POST /listings.json
-  def create
-    @listing = Listing.new(listing_params)
-
-    respond_to do |format|
-      if @listing.save
-        format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
-        format.json { render :show, status: :created, location: @listing }
-      else
-        format.html { render :new }
-        format.json { render json: @listing.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /listings/1
-  # PATCH/PUT /listings/1.json
-  def update
-    respond_to do |format|
-      if @listing.update(listing_params)
-        format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
-        format.json { render :show, status: :ok, location: @listing }
-      else
-        format.html { render :edit }
-        format.json { render json: @listing.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /listings/1
-  # DELETE /listings/1.json
-  def destroy
-    @listing.destroy
-    respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_listing
-      @listing = Listing.find(params[:id])
+    def set_flat
+      @flat = Flat.find(params[:flat_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
