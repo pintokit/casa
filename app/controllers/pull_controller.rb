@@ -1,8 +1,10 @@
 class PullController < ApplicationController
 
-  def studios
+  # GET /pull/1/bedrooms
+  def bedrooms
+    bed_type = params[:id]
     # ripped from http://mislav.net/2011/07/faraday-advanced-http/
-    url = URI.parse('http://www.rentnema.com/soap-api-4.php?type=0')
+    url = URI.parse("http://www.rentnema.com/soap-api-4.php?type=#{bed_type}")
 
     response = Net::HTTP.start(url.host, use_ssl: false) do |http|
       http.get url.request_uri, 'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A'
@@ -15,13 +17,13 @@ class PullController < ApplicationController
         format.json { listings_json }
       end
     when Net::HTTPSuccess
-      Flat.update_all is_active: false
+      Flat.where(bed: bed_type).update_all is_active: false
 
       flats_json = JSON.parse response.body
       @units = flats_json['units']
 
       @units.each do |unit|
-        flat = Flat.find_or_create_by!(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: 0) # TODO: 0 for now, use real number
+        flat = Flat.find_or_create_by!(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: bed_type)
         floorplan = Floorplan.find_or_create_by!(layout_id: unit['fi'])
         current_price = unit['rent'].delete(',').to_i
         last_listing = flat.listings.last

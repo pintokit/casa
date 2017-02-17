@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root "flats#index"
 
-  get 'pull_studios', to: 'pull#studios'
+  resources :pull, only: :bedrooms do
+    member do
+      get 'bedrooms'
+    end
+  end
 
   resources :flats do
     resources :listings, only: :index
