@@ -4,14 +4,15 @@ Rails.application.routes.draw do
   get 'pull_studios', to: 'pull#studios'
 
   resources :flats do
-    resources :listings
+    resources :listings, only: :index
   end
-
   resources :floorplans
 
   scope module: 'api' do
     namespace :v1 do
-      resources :flats, only: :index
+      resources :flats, only: :index do
+        resources :listings, only: :index
+      end
     end
   end
 
