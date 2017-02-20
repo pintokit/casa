@@ -27,18 +27,12 @@ class Floorplan < ApplicationRecord
     end
   end
 
-  def studio_windows
-    output = ""
+  def window_score
+    output = nil
 
-    if windows.nil?
-      output = "❔❔❔"
-    else
+    unless windows.nil?
       windows.each_value do |window|
-        if window == "1"
-          output.concat("🖼")
-        else
-          output.concat("⬜️")
-        end
+        output =+ window
       end
     end
 
