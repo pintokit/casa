@@ -2,9 +2,8 @@
   <%= f.error_notification %>
 
     <%= f.input :layout_id, label: 'ID' %>
-    <%= f.input :left_window, as: :boolean %>
-    <%= f.input :middle_window, as: :boolean %>
-    <%= f.input :right_window, as: :boolean %>
+    <%= f.input :consecutive_windows %>
+    <%= f.input :total_windows %>
 
     <%= f.button :submit, class: 'btn btn-block btn-success' %>
 <% end %>

@@ -64,6 +64,6 @@ class FloorplansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def floorplan_params
-      params.require(:floorplan).permit(:layout_id, :windows, :left_window, :middle_window, :right_window)
+      params.require(:floorplan).permit(:layout_id, :windows, :consecutive_windows, :total_windows)
     end
 end
