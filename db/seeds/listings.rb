@@ -3,11 +3,10 @@ flats_list = [
 ]
 
 flats_list.each do |floorplan_identifier, bed, bath, stack, floor, sqft, is_active, flat_created_at, price, listing_created_at|
-  flat = Flat.find_or_create_by!(bed: bed, bath: bath, stack: stack, floor: floor.to_i, sqft: sqft, is_active: is_active, created_at: flat_created_at)
+  flat = Flat.find_or_create_by!(bed: bed, bath: bath, stack: stack, floor: floor, sqft: sqft, is_active: is_active, created_at: flat_created_at)
 
   unless floorplan_identifier.nil?
     floorplan = Floorplan.find_or_create_by!(layout_id: floorplan_identifier)
-
     flat.update! floorplan: floorplan
   end
 
