@@ -11,7 +11,7 @@ module Api::V1
     end
 
     def windows
-      object.floorplan.window_score unless object.floorplan.nil?
+      object.floorplan.window_array unless object.floorplan.nil?
     end
 
     def latest_price
