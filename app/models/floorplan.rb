@@ -40,13 +40,15 @@ class Floorplan < ApplicationRecord
   end
 
   def window_score
+    output = 0
+
     unless windows.nil?
-      output = 0
       windows.each_value do |window|
         output += window unless window.blank?
       end
     end
-    return output unless output == 0
+    
+    return output
   end
 
   def layout_path
