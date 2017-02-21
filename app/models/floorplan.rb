@@ -27,16 +27,16 @@ class Floorplan < ApplicationRecord
     end
   end
 
-  def window_score
-    output = nil
+  def window_array
+    output = []
 
     unless windows.nil?
       windows.each_value do |window|
-        output =+ window
+        output.push(window) unless window.blank?
       end
     end
 
-    return output
+    return output unless output.empty?
   end
 
   def layout_path
