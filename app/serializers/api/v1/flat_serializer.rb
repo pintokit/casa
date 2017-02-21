@@ -1,9 +1,17 @@
 module Api::V1
   class FlatSerializer < ActiveModel::Serializer
-    attributes :bed, :bath, :stack, :floor, :sqft, :is_active, :windows, :latest_price, :price_updated_at, :layout_path
+    attributes :identifier, :bed, :bath, :stack, :floor, :sqft, :is_active, :windows, :latest_price, :price_updated_at, :layout_path
+
+    def identifier
+      object.id.to_i
+    end
+
+    def floor
+      object.floor.to_i
+    end
 
     def windows
-      object.floorplan.studio_windows unless object.floorplan.nil?
+      object.floorplan.window_score unless object.floorplan.nil?
     end
 
     def latest_price

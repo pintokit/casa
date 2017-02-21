@@ -2,7 +2,7 @@
   "name": "casa",
   "description": "Flat listings tracker",
   "scripts": {
-    "postdeploy": "rake db:migrate; rake db:seed"
+    "postdeploy": "bundle exec rake db:schema:load db:seed:listings"
   },
   "env": {
     "APP_DOMAIN": {
@@ -33,8 +33,7 @@
     }
   },
   "addons": [
-    "heroku-postgresql",
-    "heroku-redis"
+    "heroku-postgresql"
   ],
   "buildpacks": [
     {
