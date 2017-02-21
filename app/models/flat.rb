@@ -5,4 +5,10 @@ class Flat < ApplicationRecord
   def name
     floor + stack
   end
+
+  def value_score
+    last_listing = listings.last
+    
+    floor.to_i + sqft + last_listing.price
+  end
 end
