@@ -6,9 +6,14 @@ class Flat < ApplicationRecord
     floor + stack
   end
 
-  def value_score
-    last_listing = listings.last
-    
-    floor.to_i + sqft + last_listing.price
+  def window_score
+    window_count = 0
+    unless floorplan.nil? || floorplan.windows.nil?
+      floorplan.windows.each_value do |window|
+        window_count += window.to_i
+      end
+    end
+    score = normalize(window_count, 2, 4, false)
+    return score
   end
 end

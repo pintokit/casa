@@ -13,7 +13,7 @@
         <%= flat.sqft %>
       </td>
       <td class="text-center">
-        <%= flat.floorplan.window_array unless flat.floorplan.nil? %>
+        <%= flat.window_score %>
       </td>
       <td class="text-center">
         <%= time_ago_in_words(flat.listings.last.created_at) %> ago

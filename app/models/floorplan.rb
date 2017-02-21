@@ -37,16 +37,6 @@ class Floorplan < ApplicationRecord
     return output unless output.empty?
   end
 
-  def window_score
-    output = 0
-    unless windows.nil?
-      windows.each_value do |window|
-        output += window unless window.blank?
-      end
-    end
-    return output
-  end
-
   def layout_path
     "https://www.rentnema.com/img/floorplans/plan/#{layout_id}.jpg"
   end
