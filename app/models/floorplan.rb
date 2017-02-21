@@ -24,9 +24,7 @@ class Floorplan < ApplicationRecord
     flats.each do |flat|
       output.push(flat.name)
     end
-    unless output.empty?
-      return output
-    end
+    return output unless output.empty?
   end
 
   def window_array
@@ -41,13 +39,11 @@ class Floorplan < ApplicationRecord
 
   def window_score
     output = 0
-
     unless windows.nil?
       windows.each_value do |window|
         output += window unless window.blank?
       end
     end
-    
     return output
   end
 
