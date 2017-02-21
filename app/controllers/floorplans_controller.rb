@@ -4,7 +4,7 @@ class FloorplansController < ApplicationController
 
   # GET /floorplans
   def index
-    @floorplans = Floorplan.all.order(:layout_id)
+    @floorplans = Floorplan.all
   end
 
   # GET /floorplans/1

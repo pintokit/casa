@@ -3,6 +3,8 @@ class Floorplan < ApplicationRecord
   serialize :windows
   store_accessor :windows, :window1, :window2, :window3, :window4, :window5
 
+  default_scope { order(layout_id: :asc) }
+
   # convert layout_ids to a name
   def alph(x)
     array = ("AA".."ZZ").to_a
