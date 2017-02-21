@@ -64,16 +64,25 @@ class FloorplansController < ApplicationController
     end
 
     def set_windows
-      unless params[:floorplan][:consecutive_windows].blank?
-        params[:floorplan][:consecutive_windows] = params[:floorplan][:consecutive_windows].to_i
+      unless params[:floorplan][:window1].blank?
+        params[:floorplan][:window1] = params[:floorplan][:window1].to_i
       end
-      unless params[:floorplan][:total_windows].blank?
-        params[:floorplan][:total_windows] = params[:floorplan][:total_windows].to_i
+      unless params[:floorplan][:window2].blank?
+        params[:floorplan][:window2] = params[:floorplan][:window2].to_i
+      end
+      unless params[:floorplan][:window3].blank?
+        params[:floorplan][:window3] = params[:floorplan][:window3].to_i
+      end
+      unless params[:floorplan][:window4].blank?
+        params[:floorplan][:window4] = params[:floorplan][:window4].to_i
+      end
+      unless params[:floorplan][:window5].blank?
+        params[:floorplan][:window5] = params[:floorplan][:window5].to_i
       end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def floorplan_params
-      params.require(:floorplan).permit(:layout_id, :windows, :consecutive_windows, :total_windows)
+      params.require(:floorplan).permit(:layout_id, :windows, :window1, :window2, :window3, :window4, :window5)
     end
 end

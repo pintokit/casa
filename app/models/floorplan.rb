@@ -1,7 +1,7 @@
 class Floorplan < ApplicationRecord
   has_many :flats
   serialize :windows
-  store_accessor :windows, :consecutive_windows, :total_windows
+  store_accessor :windows, :window1, :window2, :window3, :window4, :window5
 
   # convert layout_ids to a name
   def alph(x)
