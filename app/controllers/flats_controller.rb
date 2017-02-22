@@ -3,7 +3,7 @@ class FlatsController < ApplicationController
 
   # GET /flats
   def index
-    @flats = Flat.all.sort_by { |flat| flat.value_score }
+    @flats = Flat.all.sort_by(&:value_score).reverse!
   end
 
   # GET /flats/1
