@@ -17,23 +17,23 @@ module ApplicationHelper
     content_for :heading, page_heading
   end
 
-  # convert true / false into Yes / No
-  def humanize_boolean(input)
-    input ||= ''
-    case input.to_s.downcase
-    when 't', 'true'
-      'Yes'
-    else
-      'No'
-    end
-  end
-
-  # to convert true / false into a css class success / danger
-  def css_for_boolean(input)
-    if input
-      'success'
-    else
-      'danger'
-    end
-  end
+  # # convert true / false into Yes / No
+  # def humanize_boolean(input)
+  #   input ||= ''
+  #   case input.to_s.downcase
+  #   when 't', 'true'
+  #     'Yes'
+  #   else
+  #     'No'
+  #   end
+  # end
+  #
+  # # to convert true / false into a css class success / danger
+  # def css_for_boolean(input)
+  #   if input
+  #     'success'
+  #   else
+  #     'danger'
+  #   end
+  # end
 end

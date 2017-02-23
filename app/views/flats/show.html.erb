@@ -31,9 +31,11 @@
 </p>
 
 <% unless @flat.floorplan.nil? %>
-  <%= link_to @flat.floorplan.layout_path do %>
-   <%= image_tag @flat.floorplan.layout_path %>
-  <% end %>
+  <p>
+    <%= link_to @flat.floorplan.layout_path do %>
+      <%= image_tag @flat.floorplan.layout_path, class: 'img-thumbnail' %>
+    <% end %>
+  </p>
 <% end %>
 
 <%= link_to 'History', flat_listings_path(@flat), class:'btn btn-block btn-default' %>
