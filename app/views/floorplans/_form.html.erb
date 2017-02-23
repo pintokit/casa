@@ -2,11 +2,9 @@
   <%= f.error_notification %>
 
     <%= f.input :layout_id, label: 'ID' %>
-    <%= f.input :window1 %>
-    <%= f.input :window2 %>
-    <%= f.input :window3 %>
-    <%= f.input :window4 %>
-    <%= f.input :window5 %>
+    <% @window_symbols.each do |window| %>
+      <%= f.input window, collection: 1..5 %>
+    <% end %>
 
     <%= f.button :submit, class: 'btn btn-block btn-success' %>
 <% end %>

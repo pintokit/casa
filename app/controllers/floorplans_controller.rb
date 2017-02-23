@@ -1,5 +1,6 @@
 class FloorplansController < ApplicationController
   before_action :set_floorplan, only: [:show, :edit, :update, :destroy]
+  before_action :set_window_symbols
   before_action :set_windows, only: [:create, :update]
 
   # GET /floorplans
@@ -59,7 +60,10 @@ class FloorplansController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_window_symbols
       @window_symbols = [:window1, :window2, :window3, :window4, :window5]
+    end
+
     def set_floorplan
       @floorplan = Floorplan.find(params[:id])
     end
