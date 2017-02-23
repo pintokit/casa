@@ -28,13 +28,11 @@ class Floorplan < ApplicationRecord
   end
 
   def window_array
-    output = []
-    unless windows.nil?
-      windows.each_value do |window|
-        output.push(window) unless window.blank?
-      end
+    unless windows.blank?
+      array = windows.values
+      array.delete_if(&:blank?)
+      return array unless array.empty?
     end
-    return output unless output.empty?
   end
 
   def layout_path

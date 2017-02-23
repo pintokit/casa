@@ -9,12 +9,8 @@ class Flat < ApplicationRecord
   def value_score
     current_price = listings.last.price
     window_avg = 0
-    window_sum = 0
-    unless floorplan.nil? || floorplan.windows.nil?
-      floorplan.windows.each_value do |window|
-        window_sum += window.to_i
-      end
-      window_avg = window_sum/floorplan.windows.count
+    unless floorplan.nil? || floorplan.window_array.blank?
+      window_avg = floorplan.window_array.sum/floorplan.window_array.count
     end
 
     price_score = normalize(current_price, 2800, 4700, true)
