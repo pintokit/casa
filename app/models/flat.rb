@@ -1,6 +1,7 @@
 class Flat < ApplicationRecord
   has_many :listings
   belongs_to :floorplan, optional: true
+  validates :bed, :bath, :sqft, numericality: { only_integer: true }
 
   def name
     floor + stack
