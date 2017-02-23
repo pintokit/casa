@@ -14,9 +14,17 @@
   <strong>Value Score:</strong>
   <%= (@flat.value_score * 10).round %>
 </p>
+
+<p>
+  <strong>City View:</strong>
+  <%= @flat.city_view %>
+</p>
+
 <p>
 <strong>Windows:</strong>
   <%= @flat.floorplan.window_array unless @flat.floorplan.nil? %>
+</p>
+
 <p>
   <strong>Price:</strong>
   <%= number_to_currency(@flat.listings.last.price, precision: 0) %>
