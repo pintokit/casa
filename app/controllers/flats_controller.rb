@@ -3,7 +3,7 @@ class FlatsController < ApplicationController
 
   # GET /flats
   def index
-    @flats = Flat.all.sort_by(&:value_score).reverse!
+    @flats = Flat.where(is_active: true, bed: 0).sort_by(&:value_score).reverse!
   end
 
   # GET /flats/1
