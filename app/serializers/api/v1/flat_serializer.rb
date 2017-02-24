@@ -1,6 +1,6 @@
 module Api::V1
   class FlatSerializer < ActiveModel::Serializer
-    attributes :identifier, :bed, :bath, :stack, :floor, :sqft, :is_active, :windows, :latest_price, :price_updated_at, :layout_path
+    attributes :identifier, :bed, :bath, :stack, :floor, :sqft, :is_active, :windows, :city_view, :latest_price, :price_updated_at, :layout_path
 
     def identifier
       object.id.to_i
@@ -12,6 +12,10 @@ module Api::V1
 
     def windows
       object.floorplan.window_array unless object.floorplan.nil?
+    end
+
+    def city_view
+      object.city_view_before_type_cast
     end
 
     def latest_price
