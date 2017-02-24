@@ -13,7 +13,11 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'Flats', flats_path %></li>
+        <li><%= link_to 'Studio', controller: :flats, action: :index, bed: 0, is_active: true %></li>
+        <li><%= link_to 'One Bedroom', controller: :flats, action: :index, bed: 1, is_active: true %></li>
+        <li><%= link_to 'Inactive Studio', controller: :flats, action: :index, bed: 0, is_active: false %></li>
+        <li><%= link_to 'Inactive One Bedroom', controller: :flats, action: 'index', bed: 1, is_active: false %></li>
+        <li><%= link_to 'All Flats', controller: :flats, action: :index, bed: [0,1], is_active: [false, true] %></li>
         <li><%= link_to 'Floorplans', floorplans_path %></li>
         <li><%= link_to 'NEMA', "https://www.rentnema.com/pdf/FloorPlatesALL.pdf" %></li>
       </ul>

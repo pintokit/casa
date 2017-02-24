@@ -17,6 +17,10 @@ module ApplicationHelper
     content_for :heading, page_heading
   end
 
+  def filter(bed_type, status, title)
+    link_to title, controller: :flats, action: :index, bed: bed_type, is_active: status
+  end
+
   # # convert true / false into Yes / No
   # def humanize_boolean(input)
   #   input ||= ''
