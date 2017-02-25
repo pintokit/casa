@@ -30,5 +30,15 @@ module Api::V1
       object.listings
     end
 
+    def listings
+      unless object.listings.empty?
+        listings_array = []
+        object.listings.each do |l|
+          listings_array.push({'price': l[:price], 'created_at': l[:created_at]})
+        end
+        return listings_array
+      end
+    end
+
   end
 end
