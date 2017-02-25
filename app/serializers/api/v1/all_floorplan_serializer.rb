@@ -7,10 +7,10 @@ module Api::V1
     end
 
     def flats
-      unless object.flats.empty?
+      unless object.flats.nil?
         flats_array = []
         object.flats.each do |f|
-          flats_array.push({'floor': f[:floor].to_i, 'stack': f[:stack].to_i})
+          flats_array.push({'floor': f[:floor], 'stack': f[:stack]})
         end
         return flats_array
       end
