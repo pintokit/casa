@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :flats, only: :index do
         resources :listings, only: :index
       end
+      get 'all/:model_name', to: 'all#export'
     end
   end
 
