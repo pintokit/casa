@@ -3,7 +3,7 @@ class FlatsController < ApplicationController
 
   # GET /flats
   def index
-    @flats = Flat.all.sort_by(&:value_score).reverse!
+    @flats = Flat.where(bed: params[:bed] ? params[:bed] : 0, is_active: params[:is_active] ? params[:is_active] : true).sort_by(&:value_score).reverse!
   end
 
   # GET /flats/1
@@ -59,6 +59,6 @@ class FlatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flat_params
-      params.require(:flat).permit(:floorplan_id, :bed, :bath, :stack, :floor, :sqft, :is_active)
+      params.require(:flat).permit(:floorplan_id, :bed, :bath, :stack, :floor, :sqft, :is_active, :city_view)
     end
 end

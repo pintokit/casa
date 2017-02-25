@@ -2,6 +2,7 @@ class Floorplan < ApplicationRecord
   has_many :flats
   serialize :windows
   store_accessor :windows, :window1, :window2, :window3, :window4, :window5
+  validates :layout_id, numericality: { only_integer: true }
 
   default_scope { order(layout_id: :asc) }
 

@@ -1,11 +1,15 @@
-<% heading 'Update Floorplan' %>
+<% title "Update #{@floorplan.name}" %>
+<% heading "Floorplan #{@floorplan.name}" %>
 
-<%= image_tag @floorplan.layout_path, class: 'img-thumbnail'%>
+<p>
+  <%= image_tag @floorplan.layout_path, class: 'img-thumbnail'%>
+</p>
 
 <%= render 'form' %>
 
 <br>
 <%= link_to 'Back to Floorplans', floorplans_path, class:'btn btn-block btn-default' %>
+
 <br>
 <%= link_to @floorplan, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-block btn-danger' do %>
   <span class='glyphicon glyphicon-trash'></span>

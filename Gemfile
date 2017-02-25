@@ -26,6 +26,8 @@ gem 'uglifier'
 
 # Rails forms made easy
 gem 'simple_form'
+# This gem can help you work fine with Enum feather, I18n and simple_form
+gem 'enum_help'
 # Simplifies using Chart.js in Rails views
 gem 'chartjs-ror'
 

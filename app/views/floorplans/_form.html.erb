@@ -1,12 +1,15 @@
 <%= simple_form_for(@floorplan) do |f| %>
   <%= f.error_notification %>
 
-    <%= f.input :layout_id, label: 'ID' %>
-    <%= f.input :window1 %>
-    <%= f.input :window2 %>
-    <%= f.input :window3 %>
-    <%= f.input :window4 %>
-    <%= f.input :window5 %>
+    <div class="col-xs-2">
+      <%= f.input :layout_id, label: 'ID' %>
+    </div>
+
+    <% @window_symbols.each do |window| %>
+      <div class="col-xs-2">
+        <%= f.input window, collection: 1..5 %>
+      </div>
+    <% end %>
 
     <%= f.button :submit, class: 'btn btn-block btn-success' %>
 <% end %>

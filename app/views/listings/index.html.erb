@@ -1,4 +1,5 @@
-<% title "#{@flat.name} Rent History" %>
+<% title "#{@flat.name} History" %>
+<% heading "#{@flat.name} Rent History" %>
 
 <%
 @data = {
@@ -26,7 +27,7 @@
     }]
   }
 } %>
-<center>
+<center class="listings-chart">
   <%= scatter_chart @data, @options %>
 </center>
 

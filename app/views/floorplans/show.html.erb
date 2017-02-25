@@ -1,4 +1,5 @@
-<% heading "#{@floorplan.name}" %>
+<% title "#{@floorplan.name}" %>
+<% heading "Floorplan #{@floorplan.name}" %>
 
 <p>
   <strong>ID:</strong>
@@ -16,8 +17,7 @@
 </p>
 
 <p>
-  <strong>Layout:</strong>
-  <%= image_tag @floorplan.layout_path, class: 'img-thumbnail'%>
+  <%= image_tag @floorplan.layout_path, class: 'img-thumbnail' %>
 </p>
 
 <%= link_to 'Back to Floorplans', floorplans_path, class:'btn btn-block btn-default' %>

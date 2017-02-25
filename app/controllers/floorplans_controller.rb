@@ -1,5 +1,6 @@
 class FloorplansController < ApplicationController
   before_action :set_floorplan, only: [:show, :edit, :update, :destroy]
+  before_action :set_window_symbols
   before_action :set_windows, only: [:create, :update]
 
   # GET /floorplans
@@ -59,25 +60,19 @@ class FloorplansController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_window_symbols
+      @window_symbols = [:window1, :window2, :window3, :window4, :window5]
+    end
+
     def set_floorplan
       @floorplan = Floorplan.find(params[:id])
     end
 
     def set_windows
-      unless params[:floorplan][:window1].blank?
-        params[:floorplan][:window1] = params[:floorplan][:window1].to_i
-      end
-      unless params[:floorplan][:window2].blank?
-        params[:floorplan][:window2] = params[:floorplan][:window2].to_i
-      end
-      unless params[:floorplan][:window3].blank?
-        params[:floorplan][:window3] = params[:floorplan][:window3].to_i
-      end
-      unless params[:floorplan][:window4].blank?
-        params[:floorplan][:window4] = params[:floorplan][:window4].to_i
-      end
-      unless params[:floorplan][:window5].blank?
-        params[:floorplan][:window5] = params[:floorplan][:window5].to_i
+      @window_symbols.each do |window|
+        unless params[:floorplan][window].blank?
+          params[:floorplan][window] = params[:floorplan][window].to_i
+        end
       end
     end
 

@@ -13,7 +13,11 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'Flats', flats_path %></li>
+        <li><%= filter_by 'Studios', 0, true %></li>
+        <li><%= filter_by 'One Bedrooms', 1, true %></li>
+        <li><%= filter_by 'Inactive Studios', 0, false %></li>
+        <li><%= filter_by 'Inactive One Bedrooms', 1, false %></li>
+        <li><%= filter_by 'All Flats', [0,1], [false, true] %></li>
         <li><%= link_to 'Floorplans', floorplans_path %></li>
         <li><%= link_to 'NEMA', "https://www.rentnema.com/pdf/FloorPlatesALL.pdf" %></li>
       </ul>

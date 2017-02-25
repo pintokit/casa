@@ -1,4 +1,5 @@
-<% heading @flat.name %>
+<% title @flat.name %>
+<% heading "Flat #{@flat.name}" %>
 
 <p>
   <strong>Floorplan:</strong>
@@ -14,18 +15,28 @@
   <strong>Value Score:</strong>
   <%= (@flat.value_score * 10).round %>
 </p>
+
+<p>
+  <strong>City View:</strong>
+  <%= @flat.city_view %>
+</p>
+
 <p>
 <strong>Windows:</strong>
   <%= @flat.floorplan.window_array unless @flat.floorplan.nil? %>
+</p>
+
 <p>
   <strong>Price:</strong>
   <%= number_to_currency(@flat.listings.last.price, precision: 0) %>
 </p>
 
 <% unless @flat.floorplan.nil? %>
-  <%= link_to @flat.floorplan.layout_path do %>
-   <%= image_tag @flat.floorplan.layout_path %>
-  <% end %>
+  <p>
+    <%= link_to @flat.floorplan.layout_path do %>
+      <%= image_tag @flat.floorplan.layout_path, class: 'img-thumbnail' %>
+    <% end %>
+  </p>
 <% end %>
 
 <%= link_to 'History', flat_listings_path(@flat), class:'btn btn-block btn-default' %>
