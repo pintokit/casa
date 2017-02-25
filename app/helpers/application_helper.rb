@@ -17,27 +17,8 @@ module ApplicationHelper
     content_for :heading, page_heading
   end
 
-  def filter(bed_type, status, title)
+  def filter_by(title, bed_type, status)
     link_to title, controller: :flats, action: :index, bed: bed_type, is_active: status
   end
 
-  # # convert true / false into Yes / No
-  # def humanize_boolean(input)
-  #   input ||= ''
-  #   case input.to_s.downcase
-  #   when 't', 'true'
-  #     'Yes'
-  #   else
-  #     'No'
-  #   end
-  # end
-  #
-  # # to convert true / false into a css class success / danger
-  # def css_for_boolean(input)
-  #   if input
-  #     'success'
-  #   else
-  #     'danger'
-  #   end
-  # end
 end
