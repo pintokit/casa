@@ -2,7 +2,7 @@
   "name": "casa",
   "description": "Flat listings tracker",
   "scripts": {
-    "postdeploy": "bundle exec rake db:schema:load db:seed db:seed:floorplans"
+    "postdeploy": "bundle exec rake db:setup"
   },
   "env": {
     "APP_DOMAIN": {
