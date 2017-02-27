@@ -1,6 +1,6 @@
 module Api::V1
   class FlatSerializer < ActiveModel::Serializer
-    attributes :identifier, :floor, :stack, :bed, :bath, :sqft, :is_active, :windows, :city_view, :layout_url, :price, :price_updated_at
+    attributes :identifier, :floor, :stack, :bed, :bath, :sqft, :is_active, :windows, :city_view, :layout_url, :price, :listing_updated_at
 
     def identifier
       object.id
