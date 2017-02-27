@@ -1,5 +1,5 @@
 module Api::V1
-  class AllFlatSerializer < ActiveModel::Serializer
+  class AllFlatListingSerializer < ActiveModel::Serializer
     attributes :bed, :bath, :stack, :floor, :sqft, :city_view, :listings
 
     def bed
@@ -23,7 +23,7 @@ module Api::V1
     end
 
     def city_view
-      object.city_view_before_type_cast
+      [object.city_view_before_type_cast, object.city_view]
     end
 
     def listings
