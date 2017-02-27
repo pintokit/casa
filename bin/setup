@@ -8,7 +8,6 @@ def setup!
     run  "bin/rake db:create"
     run  "bin/rake db:migrate"
     run  "bin/rake db:seed"
-    run  "bin/rake db:seed:floorplans"
   end
 end
 
