@@ -1,6 +1,6 @@
 module Api::V1
   class FlatSerializer < ActiveModel::Serializer
-    attributes :identifier, :floor, :stack, :bed, :bath, :sqft, :is_active, :windows, :city_view, :layout_url
+    attributes :identifier, :floor, :stack, :bed, :bath, :sqft, :is_active, :windows, :city_view, :layout_url, :price, :price_updated_at
 
     def identifier
       object.id
@@ -20,6 +20,14 @@ module Api::V1
 
     def layout_url
       object.floorplan.layout_path unless object.floorplan.nil?
+    end
+
+    def price
+      object.listings.last.price
+    end
+
+    def listing_updated_at
+      object.listings.last.created_at
     end
   end
 end
