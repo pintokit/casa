@@ -1,9 +1,6 @@
 {
   "name": "casa",
   "description": "Flat listings tracker",
-  "scripts": {
-    "postdeploy": "rake db:setup && rake pull_listings"
-  },
   "env": {
     "ALL_FLATS_LISTINGS": {
       "required": true
