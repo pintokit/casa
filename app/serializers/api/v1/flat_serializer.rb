@@ -1,10 +1,6 @@
 module Api::V1
   class FlatSerializer < ActiveModel::Serializer
-    attributes :identifier, :bed, :bath, :stack, :floor, :sqft, :is_active, :windows, :city_view, :latest_price, :price_updated_at, :layout_path
-
-    def identifier
-      object.id.to_i
-    end
+    attributes :floor, :stack, :bed, :bath, :sqft, :is_active, :windows, :city_view, :layout_url
 
     def floor
       object.floor.to_i
@@ -15,18 +11,10 @@ module Api::V1
     end
 
     def city_view
-      object.city_view_before_type_cast
+      [object.city_view_before_type_cast, object.city_view]
     end
 
-    def latest_price
-      object.listings.last.price
-    end
-
-    def price_updated_at
-      object.listings.last.created_at
-    end
-
-    def layout_path
+    def layout_url
       object.floorplan.layout_path unless object.floorplan.nil?
     end
   end

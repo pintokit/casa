@@ -5,6 +5,12 @@
     "postdeploy": "bundle exec rake db:schema:load db:seed"
   },
   "env": {
+    "ALL_FLATS_LISTINGS": {
+      "required": true
+    },
+    "ALL_FLOORPLANS": {
+      "required": true
+    },
     "APP_DOMAIN": {
       "required": true
     },
