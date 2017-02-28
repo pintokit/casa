@@ -15,7 +15,7 @@ module Api::V1
     end
 
     def city_view
-      [object.city_view_before_type_cast, object.city_view]
+      object.city_view
     end
 
     def layout_url
