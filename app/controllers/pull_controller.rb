@@ -13,8 +13,8 @@ class PullController < ApplicationController
     case response
     when Net::HTTPRedirection
       respond_to do |format|
-        format.html { redirect_to listings_url, notice: 'Failed to pull listings because the remote server issued a redirect' }
-        format.json { listings_json }
+        format.html { redirect_to root_url, notice: 'Failed to pull listings because the remote server issued a redirect' }
+        format.json { flats_json }
       end
     when Net::HTTPSuccess
       Flat.where(bed: bed_type).update_all is_active: false
@@ -38,21 +38,15 @@ class PullController < ApplicationController
         end
       end
       respond_to do |format|
-        format.html { redirect_to flats_url, notice: 'Listings pulled successfully.' }
+        format.html { redirect_to root_url, notice: 'Listings pulled successfully.' }
         format.json { flats_json }
       end
     else
       # response code isn't a 200; raise an exception
       respond_to do |format|
-        format.html { redirect_to listings_url, notice: response.error! }
-        format.json { listings_json }
+        format.html { redirect_to root_url, notice: response.error! }
+        format.json { flats_json }
       end
     end
   end
-
-  private
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def pull_params
-      params.require(:flat).permit(:floorplan, :bed, :bath, :stack, :floor, :sqft, :is_active)
-    end
 end
