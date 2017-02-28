@@ -23,13 +23,13 @@ module Api::V1
     end
 
     def city_view
-      [object.city_view_before_type_cast, object.city_view]
+      object.city_view_before_type_cast
     end
 
     def listings
       listings_array = []
       object.listings.each do |l|
-        listings_array.push({'price': l[:price], 'created_at': l[:created_at]})
+        listings_array.push({'price': l[:price], 'created-at': l[:created_at]})
       end
       return listings_array
     end

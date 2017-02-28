@@ -21,10 +21,10 @@ end
 flats_json = pull_db_seed(ENV['ALL_FLATS_LISTINGS'])
 
 flats_json.each do |f|
-  flat = Flat.create!(bed: f['attributes']['bed'], bath: f['attributes']['bath'], stack: f['attributes']['stack'], floor: f['attributes']['floor'], sqft: f['attributes']['sqft'], city_view: f['attributes']['city_view'], is_active: false)
+  flat = Flat.create!(bed: f['attributes']['bed'], bath: f['attributes']['bath'], stack: f['attributes']['stack'], floor: f['attributes']['floor'], sqft: f['attributes']['sqft'], city_view: f['attributes']['city-view'], is_active: false)
 
   f['attributes']['listings'].each do |l|
-    Listing.create!(flat: flat, price: l['price'], created_at: l['created_at'])
+    Listing.create!(flat: flat, price: l['price'], created_at: l['created-at'])
   end
 end
 
