@@ -20,7 +20,7 @@ class Flat < ApplicationRecord
 
     price_score = normalize(current_price, 2800, 4700, true)
     window_score = normalize(window_avg, 1, 4, false)
-    view_score = normalize(view, 0, 4, false)
+    view_score = normalize(view, 0, 3, false)
     floor_score = normalize(floor.to_i, 3, 37, false)
     sqft_score = normalize(sqft, 463, 906, false)
     return (price_score * 3.5) + window_score + view_score + floor_score + sqft_score
