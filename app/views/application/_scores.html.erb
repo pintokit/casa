@@ -7,13 +7,12 @@
       <th>Flat</th>
       <th>Price</th>
       <th>Sqft</th>
-      <th class="hidden-xs">Score</th>
+      <th>Score</th>
       <th>💲</th>
       <th>🖼</th>
-      <th>📐</th>
       <th>🌇</th>
       <th>🏢</th>
-      <th colspan="1"></th>
+      <th>📐</th>
     </tr>
   </thead>
 
@@ -21,7 +20,9 @@
     <% @flats.each do |flat| %>
       <tr class="<% if !flat.is_active %>inactive<% end %>">
         <td>
-          <%= flat.name %>
+          <%= link_to flat_path(flat), class: 'btn btn-default' do %>
+            <%= flat.name %>
+          <% end %>
         </td>
         <td>
           <%= link_to flat_listings_path(flat) do %>
@@ -31,7 +32,7 @@
         <td>
           <%= flat.sqft %>
         </td>
-        <td class="hidden-xs">
+        <td>
           <%= (flat.value_score * 100).round %>
         </td>
         <td>
@@ -48,11 +49,6 @@
         </td>
         <td>
           <%= (flat.sqft_score * 100).round %>
-        </td>
-        <td>
-          <%= link_to flat_path(flat), class: 'btn btn-default' do %>
-            <span class="glyphicon glyphicon-info-sign"></span>
-          <% end %>
         </td>
       </tr>
     <% end %>
