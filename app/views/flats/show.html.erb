@@ -31,6 +31,10 @@
   <%= number_to_currency(@flat.listings.last.price, precision: 0) %>
 </p>
 
+<p class="text-muted pull-right">
+  Updated <%= time_ago_in_words(@flat.listings.last.created_at) %> ago
+</p>
+
 <% unless @flat.floorplan.nil? %>
   <p>
     <%= link_to @flat.floorplan.layout_path do %>
