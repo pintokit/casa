@@ -24,25 +24,25 @@
           <% end %>
         </td>
         <td>
-          <%= price_per_sqft_link(flat) %>
+          <%= price_per_sqft_link flat %>
         </td>
         <td>
-          <%= score_column(flat.value_score, 100, 650)%>
+          <%= column_for flat.value_score, 100, 650 %>
         </td>
         <td>
-          <%= score_column(flat.price_score, 350, 350)%>
+          <%= column_for flat.price_score, 350, 350 %>
         </td>
         <td>
-          <%= score_column(flat.window_score, 100, 100)%>
+          <%= column_for flat.window_score, 100, 100 %>
         </td>
         <td>
-          <%= score_column(flat.view_score, 50, 50)%>
+          <%= column_for flat.view_score, 50, 50 %>
         </td>
         <td>
-          <%= score_column(flat.floor_score, 50, 50)%>
+          <%= column_for flat.floor_score, 50, 50 %>
         </td>
         <td>
-          <%= score_column(flat.sqft_score, 100, 100)%>
+          <%= column_for flat.sqft_score, 100, 100 %>
         </td>
       </tr>
     <% end %>

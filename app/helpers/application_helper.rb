@@ -27,7 +27,7 @@ module ApplicationHelper
     end
   end
 
-  def score_column(attribute, multiple, weight)
+  def column_for(attribute, multiple, weight)
     "<h5 class='hidden-xs'>
        #{(attribute * multiple).round}  <small>of #{weight}</small>
     </h5>
