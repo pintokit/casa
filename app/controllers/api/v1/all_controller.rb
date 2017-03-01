@@ -8,6 +8,9 @@ module Api::V1
         render json: Flat.all.sort_by(&:value_score).reverse!, each_serializer: AllFlatListingSerializer
       when 'floorplans'
         render json: Floorplan.all.order(:layout_id), each_serializer: AllFloorplanSerializer
+      when 'scores'
+        @flats = Flat.all.sort_by(&:value_score).reverse!
+        render "application/_scores"
       else
         render json: Flat.all.sort_by(&:value_score).reverse!, each_serializer: AllFlatListingSerializer
       end
