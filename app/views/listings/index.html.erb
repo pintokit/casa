@@ -34,18 +34,18 @@
 <table class='table table-hover'>
   <thead>
     <tr>
-      <th class="text-center">Price</th>
-      <th class="text-center">Updated</th>
+      <th>Price</th>
+      <th>Updated</th>
     </tr>
   </thead>
 
   <tbody>
     <% @listings.each do |listing| %>
       <tr>
-        <td class="text-center">
+        <td>
           <%= number_to_currency(listing.price, precision: 0) %>
         </td>
-        <td class="text-center">
+        <td>
           <%= time_ago_in_words(listing.created_at) %> ago
         </td>
       </tr>

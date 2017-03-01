@@ -4,11 +4,11 @@
 <table class='table table-hover'>
   <thead>
     <tr>
-      <th class="text-center">Flat</th>
-      <th class="text-center">Price</th>
-      <th class="text-center">Sqft</th>
-      <th class="text-center">Score</th>
-      <th class="text-center">Time</th>
+      <th>Flat</th>
+      <th>Price</th>
+      <th>Sqft</th>
+      <th>Score</th>
+      <th class="hidden-xs">Time</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -16,22 +16,22 @@
   <tbody>
     <% @flats.each do |flat| %>
       <tr class="<% if !flat.is_active %>inactive<% end %>">
-        <td class="text-center">
+        <td>
           <%= flat.name %>
         </td>
-        <td class="text-center">
+        <td>
           <%= link_to flat_listings_path(flat) do %>
            <%= number_to_currency(flat.listings.last.price, precision: 0) %>
           <% end %>
         </td>
-        <td class="text-center">
+        <td>
           <%= flat.sqft %>
         </td>
-        <td class="text-center">
-          <%= (flat.value_score * 10).round %>
+        <td>
+          <%= (flat.value_score * 10).round %><br>
           <%= flat.city_view %>
         </td>
-        <td class="text-center">
+        <td class="text-muted hidden-xs">
           <%= time_ago_in_words(flat.listings.last.created_at) %> ago
         </td>
         <td>

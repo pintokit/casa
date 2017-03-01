@@ -4,10 +4,10 @@
 <table class='table table-hover'>
   <thead>
     <tr>
-      <th class="text-center">Name</th>
-      <th class="text-center">Layout</th>
-      <th class="text-center">Windows</th>
-      <th class="text-center">Count</th>
+      <th>Name</th>
+      <th>Layout</th>
+      <th>Windows</th>
+      <th>Count</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -15,16 +15,16 @@
   <tbody>
     <% @floorplans.each do |floorplan| %>
       <tr>
-        <td class="text-center">
+        <td>
           <%= floorplan.name %>
         </td>
-        <td class="text-center">
+        <td>
           <%= image_tag floorplan.layout_path, class: 'img-thumbnail'%>
         </td>
-        <td class="text-center">
+        <td>
           <%= floorplan.window_array %>
         </td>
-        <td class="text-center">
+        <td>
           <%= floorplan.flats.count %>
         </td>
         <td>
