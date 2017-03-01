@@ -5,8 +5,7 @@
   <thead>
     <tr>
       <th>Flat</th>
-      <th>Price</th>
-      <th>Sqft</th>
+      <th>Price per ft<sup>2</sup></th>
       <th>Score</th>
       <th>💲</th>
       <th>🖼</th>
@@ -18,37 +17,32 @@
 
   <tbody>
     <% @flats.each do |flat| %>
-      <tr class="<% if !flat.is_active %>inactive<% end %>">
-        <td>
+      <tr>
+        <td class="<% if !flat.is_active %>inactive<% end %>">
           <%= link_to flat_path(flat), class: 'btn btn-default' do %>
             <%= flat.name %>
           <% end %>
         </td>
         <td>
-          <%= link_to flat_listings_path(flat) do %>
-           <%= number_to_currency(flat.listings.last.price, precision: 0) %>
-          <% end %>
+          <%= price_per_sqft_link(flat) %>
         </td>
         <td>
-          <%= flat.sqft %>
+          <%= score_column(flat.value_score, 100, 650)%>
         </td>
         <td>
-          <%= (flat.value_score * 100).round %>
+          <%= score_column(flat.price_score, 350, 350)%>
         </td>
         <td>
-          <%= (flat.price_score * 350).round %>
+          <%= score_column(flat.window_score, 100, 100)%>
         </td>
         <td>
-          <%= (flat.window_score * 100).round %>
+          <%= score_column(flat.view_score, 50, 50)%>
         </td>
         <td>
-          <%= (flat.view_score * 50).round %>
+          <%= score_column(flat.floor_score, 50, 50)%>
         </td>
         <td>
-          <%= (flat.floor_score * 50).round %>
-        </td>
-        <td>
-          <%= (flat.sqft_score * 100).round %>
+          <%= score_column(flat.sqft_score, 100, 100)%>
         </td>
       </tr>
     <% end %>

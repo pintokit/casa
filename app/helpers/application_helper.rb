@@ -21,4 +21,20 @@ module ApplicationHelper
     link_to title, root_path(bed: bed_type, is_active: status)
   end
 
+  def price_per_sqft_link(flat)
+    link_to flat_listings_path(flat) do
+      number_to_currency((flat.listings.last.price - 2000.0) / (flat.sqft-1.0), precision: 2)
+    end
+  end
+
+  def score_column(attribute, multiple, weight)
+    "<h5 class='hidden-xs'>
+       #{(attribute * multiple).round}  <small>of #{weight}</small>
+    </h5>
+    <h6 class='visible-xs'>
+      <u> #{(attribute * multiple).round} </u>
+      <div class='visible-xs'><small>#{weight}</small></div>
+    </h6>".html_safe
+  end
+
 end
