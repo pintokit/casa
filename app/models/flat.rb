@@ -23,7 +23,7 @@ class Flat < ApplicationRecord
     view_score = normalize(view, 0, 3, false)
     floor_score = normalize(floor.to_i, 3, 37, false)
     sqft_score = normalize(sqft, 463, 906, false)
-    return (price_score * 3.5) + window_score + view_score + floor_score + sqft_score
+    return (price_score * 3.5) + window_score + (view_score/2) + (floor_score/2) + sqft_score
   end
 
   enum city_view: {'Totally Obstructed': 0, 'Mostly Obstructed': 1, 'Partially Obstructed': 2, 'Unobstructed': 3}
