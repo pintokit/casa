@@ -5,11 +5,14 @@ module Api::V1
     def export
       case params[:model_name]
       when 'flats'
-        render json: Flat.all.sort_by(&:value_score).reverse!, each_serializer: AllFlatSerializer
+        render json: Flat.all.sort_by(&:value_score).reverse!, each_serializer: AllFlatListingSerializer
       when 'floorplans'
         render json: Floorplan.all.order(:layout_id), each_serializer: AllFloorplanSerializer
+      when 'scores'
+        @flats = Flat.all.sort_by(&:value_score).reverse!
+        render "application/_scores"
       else
-        render json: Flat.all.sort_by(&:value_score).reverse!, each_serializer: AllFlatSerializer
+        render json: Flat.all.sort_by(&:value_score).reverse!, each_serializer: AllFlatListingSerializer
       end
     end
 

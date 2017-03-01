@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def filter_by(title, bed_type, status)
-    link_to title, controller: :flats, action: :index, bed: bed_type, is_active: status
+    link_to title, root_path(bed: bed_type, is_active: status)
   end
 
 end

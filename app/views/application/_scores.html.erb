@@ -1,5 +1,5 @@
-<% title 'NEMA' %>
-<% heading 'NEMA' %>
+<% title 'Value Scores' %>
+<% heading 'Value Scores' %>
 
 <table class='table table-hover'>
   <thead>
@@ -7,9 +7,13 @@
       <th>Flat</th>
       <th>Price</th>
       <th>Sqft</th>
-      <th>Score</th>
-      <th class="hidden-xs">Time</th>
-      <th colspan="2"></th>
+      <th class="hidden-xs">Score</th>
+      <th>💲</th>
+      <th>🖼</th>
+      <th>📐</th>
+      <th>🌇</th>
+      <th>🏢</th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -27,19 +31,23 @@
         <td>
           <%= flat.sqft %>
         </td>
-        <td>
-          <%= (flat.value_score * 10).round %><br>
-          <%= flat.city_view %>
-        </td>
-        <td class="text-muted hidden-xs">
-          <%= time_ago_in_words(flat.listings.last.created_at) %> ago
+        <td class="hidden-xs">
+          <%= (flat.value_score * 100).round %>
         </td>
         <td>
-          <% unless flat.floorplan.nil? %>
-            <%= link_to flat.floorplan.layout_path, class: 'btn btn-default' do %>
-              <span class="glyphicon glyphicon-camera"></span>
-            <% end %>
-          <% end %>
+          <%= (flat.price_score * 350).round %>
+        </td>
+        <td>
+          <%= (flat.window_score * 100).round %>
+        </td>
+        <td>
+          <%= (flat.view_score * 50).round %>
+        </td>
+        <td>
+          <%= (flat.floor_score * 50).round %>
+        </td>
+        <td>
+          <%= (flat.sqft_score * 100).round %>
         </td>
         <td>
           <%= link_to flat_path(flat), class: 'btn btn-default' do %>
@@ -50,6 +58,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Pull Studios', bedrooms_pull_path(id: 0), class: 'btn btn-block btn-primary' %>
-<%= link_to 'Pull One Bedrooms', bedrooms_pull_path(id: 1), class: 'btn btn-block btn-primary' %>

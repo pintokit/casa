@@ -2,9 +2,15 @@
   "name": "casa",
   "description": "Flat listings tracker",
   "scripts": {
-    "postdeploy": "bundle exec rake db:schema:load db:seed db:seed:floorplans"
+    "postdeploy": "rake db:schema:load && rake db:seed && rake pull_listings"
   },
   "env": {
+    "ALL_FLATS_LISTINGS": {
+      "required": true
+    },
+    "ALL_FLOORPLANS": {
+      "required": true
+    },
     "APP_DOMAIN": {
       "required": true
     },
@@ -23,7 +29,7 @@
     "RAILS_SERVE_STATIC_FILES": {
       "required": true
     },
-    "SECRET_KEY_BASE": {
+    "WEB_CONCURRENCY": {
       "required": true
     }
   },
