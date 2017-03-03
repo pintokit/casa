@@ -16,16 +16,8 @@ class Floorplan < ApplicationRecord
     if layout_id.nil?
       "No Layout"
     else
-      "#{alph(layout_id.modulo(26*26))}: #{id}"
+      "#{alph(layout_id.modulo(26*26))}: #{layout_version}"
     end
-  end
-
-  def assigned_flats
-    output = []
-    flats.each do |flat|
-      output.push(flat.name)
-    end
-    return output unless output.empty?
   end
 
   def window_array
@@ -37,6 +29,10 @@ class Floorplan < ApplicationRecord
   end
 
   def layout_path
-    "https://www.rentnema.com/img/floorplans/plan/#{layout_id}.jpg"
+    if layout_version.blank?
+      "https://www.rentnema.com/img/floorplans/plan/#{layout_id}.jpg"
+    else
+      "https://s3-us-west-1.amazonaws.com/flats-nema/#{layout_id}-#{layout_version}.jpg"
+    end
   end
 end

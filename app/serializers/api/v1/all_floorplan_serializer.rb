@@ -1,9 +1,13 @@
 module Api::V1
   class AllFloorplanSerializer < ActiveModel::Serializer
-    attributes :layout, :windows, :flats
+    attributes :layout, :version, :windows, :flats
 
     def layout
       object.layout_id
+    end
+
+    def version
+      object.layout_version
     end
 
     def flats

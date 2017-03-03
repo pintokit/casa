@@ -5,11 +5,12 @@ class FloorplansController < ApplicationController
 
   # GET /floorplans
   def index
-    @floorplans = Floorplan.all
+    @floorplans = Floorplan.all.order(:layout_id, :layout_version)
   end
 
   # GET /floorplans/1
   def show
+    @flats = @floorplan.flats
   end
 
   # GET /floorplans/new
@@ -78,6 +79,6 @@ class FloorplansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def floorplan_params
-      params.require(:floorplan).permit(:layout_id, :windows, :window1, :window2, :window3, :window4, :window5)
+      params.require(:floorplan).permit(:layout_id, :layout_version, :windows, :window1, :window2, :window3, :window4, :window5)
     end
 end
