@@ -21,7 +21,9 @@
 </p>
 
 <p>
-  <%= image_tag @floorplan.layout_path, class: 'img-thumbnail' %>
+  <%= link_to @floorplan.layout_path do %>
+    <%= image_tag @floorplan.layout_path, class: 'img-thumbnail' %>
+  <% end %>
 </p>
 
 <%= link_to 'Back to Floorplans', floorplans_path, class:'btn btn-block btn-default' %>
