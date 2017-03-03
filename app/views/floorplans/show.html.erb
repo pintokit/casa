@@ -8,7 +8,11 @@
 
 <p>
   <strong>Flats:</strong>
-  <%= @floorplan.assigned_flats %>
+  <% @flats.each do |flat| %>
+    <%= link_to flat_path(flat), class: 'btn btn-default' do %>
+      <%= flat.name %>
+    <% end %>
+  <% end %>
 </p>
 
 <p>

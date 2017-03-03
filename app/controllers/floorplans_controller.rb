@@ -10,6 +10,7 @@ class FloorplansController < ApplicationController
 
   # GET /floorplans/1
   def show
+    @flats = @floorplan.flats
   end
 
   # GET /floorplans/new

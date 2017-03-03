@@ -20,14 +20,6 @@ class Floorplan < ApplicationRecord
     end
   end
 
-  def assigned_flats
-    output = []
-    flats.each do |flat|
-      output.push(flat.name)
-    end
-    return output unless output.empty?
-  end
-
   def window_array
     unless windows.blank?
       array = windows.values
