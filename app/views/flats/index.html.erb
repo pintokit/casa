@@ -36,7 +36,7 @@
         </td>
         <td>
           <% unless flat.floorplan.nil? %>
-            <%= link_to flat.floorplan.layout_path, class: 'btn btn-default' do %>
+            <%= link_to flat.floorplan, class: 'btn btn-default' do %>
               <span class="glyphicon glyphicon-camera"></span>
             <% end %>
           <% end %>

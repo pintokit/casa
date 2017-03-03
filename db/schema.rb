@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170223021726) do
+ActiveRecord::Schema.define(version: 20170303074211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,9 @@ ActiveRecord::Schema.define(version: 20170223021726) do
   create_table "floorplans", force: :cascade do |t|
     t.integer  "layout_id"
     t.jsonb    "windows"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "layout_image"
   end
 
   create_table "listings", force: :cascade do |t|

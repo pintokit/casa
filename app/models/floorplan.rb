@@ -29,6 +29,10 @@ class Floorplan < ApplicationRecord
   end
 
   def layout_path
-    "https://www.rentnema.com/img/floorplans/plan/#{layout_id}.jpg"
+    if layout_image.blank?
+      "https://www.rentnema.com/img/floorplans/plan/#{layout_id}.jpg"
+    else
+      "https://s3-us-west-1.amazonaws.com/flats-nema/#{layout_image}.png"
+    end
   end
 end
