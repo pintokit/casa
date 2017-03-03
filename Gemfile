@@ -5,8 +5,6 @@ ruby '2.4.0'
 gem 'rails'
 # Use Puma as the app server
 gem 'puma'
-# Use S3 for image hosting
-gem 'aws-sdk'
 
 # Use postgresql as the database for Active Record
 gem 'pg'

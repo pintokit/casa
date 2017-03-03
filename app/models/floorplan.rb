@@ -32,7 +32,7 @@ class Floorplan < ApplicationRecord
     if layout_image.blank?
       "https://www.rentnema.com/img/floorplans/plan/#{layout_id}.jpg"
     else
-      "https://s3-us-west-1.amazonaws.com/flats-nema/#{layout_image}.png"
+      "https://s3-us-west-1.amazonaws.com/flats-nema/#{layout_image}.jpg"
     end
   end
 end
