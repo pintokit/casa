@@ -29,10 +29,10 @@ class Floorplan < ApplicationRecord
   end
 
   def layout_path
-    if layout_image.blank?
+    if layout_version.blank?
       "https://www.rentnema.com/img/floorplans/plan/#{layout_id}.jpg"
     else
-      "https://s3-us-west-1.amazonaws.com/flats-nema/#{layout_image}.jpg"
+      "https://s3-us-west-1.amazonaws.com/flats-nema/#{layout_id}-#{layout_version}.jpg"
     end
   end
 end
