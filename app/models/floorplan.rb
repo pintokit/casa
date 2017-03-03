@@ -16,7 +16,7 @@ class Floorplan < ApplicationRecord
     if layout_id.nil?
       "No Layout"
     else
-      "#{alph(layout_id.modulo(26*26))}: #{id}"
+      "#{alph(layout_id.modulo(26*26))}: #{layout_version}"
     end
   end
 
