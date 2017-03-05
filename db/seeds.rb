@@ -39,6 +39,3 @@ floorplans_json.each do |h|
     flat.save
   end
 end
-
-JsonListingJob.new("nema", ENV['NEMA_URL'], 0).perform_now
-JsonListingJob.new("nema", ENV['NEMA_URL'], 1).perform_now
