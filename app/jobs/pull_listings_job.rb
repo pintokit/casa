@@ -1,7 +1,7 @@
 class PullListingsJob < ApplicationJob
   queue_as :default
 
-  def pull_listings(building, url, bed_type)
+  def request_flats(building, url, bed_type)
     if building['nema']
       url = URI.parse("#{url}#{bed_type}")
     else
@@ -46,6 +46,6 @@ class PullListingsJob < ApplicationJob
   end
 
   def perform(building, url, bed_type)
-    pull_listings(building, url, bed_type)
+    request_flats(building, url, bed_type)
   end
 end
