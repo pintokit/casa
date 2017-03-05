@@ -17,6 +17,9 @@
     "LANG": {
       "required": true
     },
+    "NEMA_URL": {
+      "required": true
+    },
     "RACK_ENV": {
       "required": true
     },
