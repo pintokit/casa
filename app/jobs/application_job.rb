@@ -1,9 +1,9 @@
 class ApplicationJob < ActiveJob::Base
   def nema_flats(units, bed_type)
-    Flat.where(bed: bed_type, building: "nema").update_all is_active: false
+    Flat.where(bed: bed_type, property: :nema).update_all is_active: false
 
     units.each do |unit|
-      flat = Flat.find_or_create_by!(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: bed_type, building: "nema")
+      flat = Flat.find_or_create_by!(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: bed_type, property: :nema)
       floorplan = Floorplan.find_or_create_by!(layout_id: unit['fi'])
       current_price = unit['rent'].delete(',').to_i
       last_listing = flat.listings.last

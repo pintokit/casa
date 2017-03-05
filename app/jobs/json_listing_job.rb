@@ -2,7 +2,7 @@ class JsonListingJob < ApplicationJob
   queue_as :default
 
   def request_flats(building, url, bed_type)
-    if building == 'nema'
+    if building == :nema
       url = URI.parse("#{url}#{bed_type}")
     else
       url = URI.parse(url)
@@ -17,7 +17,7 @@ class JsonListingJob < ApplicationJob
     when Net::HTTPSuccess
       data_json = JSON.parse response.body
 
-      if building == 'nema'
+      if building == :nema
         units = data_json['units']
         nema_flats(units, bed_type)
       end

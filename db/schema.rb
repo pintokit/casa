@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170305205531) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "city_view"
-    t.string   "building"
+    t.integer  "property"
     t.index ["floorplan_id"], name: "index_flats_on_floorplan_id", using: :btree
   end
 
