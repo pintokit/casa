@@ -23,7 +23,7 @@ module Api::V1
     end
 
     def floorplan_url
-      object.floorplan.layout_path unless object.floorplan.nil?
+      object.layout_path
     end
 
     def price
