@@ -38,7 +38,7 @@
 <% unless @flat.floorplan.nil? %>
   <p>
     <%= link_to @flat.floorplan do %>
-      <%= image_tag @flat.floorplan.layout_path, class: 'img-thumbnail' %>
+      <%= image_tag @flat.layout_path, class: 'img-thumbnail' %>
     <% end %>
   </p>
 <% end %>

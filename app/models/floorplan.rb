@@ -29,10 +29,12 @@ class Floorplan < ApplicationRecord
   end
 
   def layout_path
-    if layout_version.blank?
+    if layout_version.blank? && hirise['nema']
       "https://www.rentnema.com/img/floorplans/plan/#{layout_id}.jpg"
-    else
+    elsif hirise['nema']
       "https://s3-us-west-1.amazonaws.com/flats-nema/#{layout_id}-#{layout_version}.jpg"
+    elsif hirise['jasper']
+      "https://www.rentjasper.com/wp-content/uploads/2015/05/Jasper_Web_#{flats.first.name}.svg"
     end
   end
 
