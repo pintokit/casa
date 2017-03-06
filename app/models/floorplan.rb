@@ -33,8 +33,10 @@ class Floorplan < ApplicationRecord
       "https://www.rentnema.com/img/floorplans/plan/#{layout_id}.jpg"
     elsif hirise['nema']
       "https://s3-us-west-1.amazonaws.com/flats-nema/#{layout_id}-#{layout_version}.jpg"
-    elsif hirise['jasper']
-      "https://www.rentjasper.com/wp-content/uploads/2015/05/Jasper_Web_#{flats.first.name}.svg"
+    elsif hirise['jasper'] && !flats.empty?
+      flats.first.layout_path
+    else
+      return ''
     end
   end
 

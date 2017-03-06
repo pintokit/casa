@@ -29,9 +29,10 @@ class ApplicationJob < ActiveJob::Base
       else
         floor = unit['floor']
       end
+      stack = unit['name'].last(2)
 
-      flat = Flat.find_or_create_by!(floor: floor, stack: unit['name'].last(2), sqft: unit['square_feet'], bath: unit['bath_count'], bed: unit['bed_count'])
-      floorplan = Floorplan.find_or_create_by!(layout_id: unit['floor_plan']['id'], hirise: hirise)
+      flat = Flat.find_or_create_by!(floor: floor, stack: stack, sqft: unit['square_feet'], bath: unit['bath_count'], bed: unit['bed_count'])
+      floorplan = Floorplan.find_or_create_by!(layout_id: unit['floor_plan']['id'], layout_version: stack.to_i, hirise: hirise)
       current_price = unit['price']
       last_listing = flat.listings.last
 
