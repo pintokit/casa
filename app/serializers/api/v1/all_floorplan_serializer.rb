@@ -1,6 +1,6 @@
 module Api::V1
   class AllFloorplanSerializer < ActiveModel::Serializer
-    attributes :layout, :version, :windows, :flats
+    attributes :layout, :version, :hirise, :windows, :flats
 
     def layout
       object.layout_id
@@ -8,6 +8,10 @@ module Api::V1
 
     def version
       object.layout_version
+    end
+
+    def hirise
+      object.hirise_before_type_cast
     end
 
     def flats
