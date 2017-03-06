@@ -1,10 +1,10 @@
 class ApplicationJob < ActiveJob::Base
-  def nema_flats(units, bed_type)
-    Flat.where(bed: bed_type, property: :nema).update_all is_active: false
+  def nema_flats(hirise, units_json, bed_type)
+    Flat.joins(:floorplan).where(flats: {bed: bed_type}, floorplans: {hirise: hirise}).update_all is_active: false
 
-    units.each do |unit|
-      flat = Flat.find_or_create_by!(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: bed_type, property: :nema)
-      floorplan = Floorplan.find_or_create_by!(layout_id: unit['fi'])
+    units_json.each do |unit|
+      flat = Flat.find_or_create_by!(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: bed_type)
+      floorplan = Floorplan.find_or_create_by!(layout_id: unit['fi'], hirise: hirise)
       current_price = unit['rent'].delete(',').to_i
       last_listing = flat.listings.last
 

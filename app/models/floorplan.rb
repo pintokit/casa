@@ -35,4 +35,6 @@ class Floorplan < ApplicationRecord
       "https://s3-us-west-1.amazonaws.com/flats-nema/#{layout_id}-#{layout_version}.jpg"
     end
   end
+
+  enum hirise: [:nema, :jasper]
 end
