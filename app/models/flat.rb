@@ -40,5 +40,17 @@ class Flat < ApplicationRecord
     return (price_score * 3.5) + window_score + (view_score/2) + (floor_score/2) + sqft_score
   end
 
+  def layout_path
+    if floorplan.hirise['jasper']
+      unit = name
+      if floor.length == 1
+        unit = "0" + floor + stack
+      end
+      "https://www.rentjasper.com/wp-content/uploads/2015/05/Jasper_Web_#{unit}.svg"
+    else
+      floorplan.layout_path
+    end
+  end
+
   enum city_view: {'Totally Obstructed': 0, 'Mostly Obstructed': 1, 'Partially Obstructed': 2, 'Unobstructed': 3}
 end

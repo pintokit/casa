@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
   root "flats#index"
 
-  resources :pull, only: :bedrooms do
-    member do
-      get 'bedrooms'
-    end
-  end
-
   resources :flats do
     resources :listings, only: :index
   end

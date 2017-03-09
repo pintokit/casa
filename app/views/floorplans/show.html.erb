@@ -1,6 +1,10 @@
-<% title "#{@floorplan.name}" %>
+<% title "#{@floorplan.hirise.upcase} #{@floorplan.name}" %>
 <% heading "Floorplan #{@floorplan.name}" %>
 
+<p>
+  <strong>Hi-Rise</strong>
+  <%= @floorplan.hirise.upcase %>
+</p>
 <p>
   <strong>ID:</strong>
   <%= @floorplan.layout_id %>

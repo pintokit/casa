@@ -14,7 +14,13 @@
     "APP_DOMAIN": {
       "required": true
     },
+    "JASPER_URL": {
+      "required": true
+    },
     "LANG": {
+      "required": true
+    },
+    "NEMA_URL": {
       "required": true
     },
     "RACK_ENV": {
