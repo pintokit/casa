@@ -33,10 +33,11 @@ floorplans_json = pull_db_seed(ENV['ALL_FLOORPLANS'])
 
 floorplans_json.each do |floorplan|
   json = floorplan['attributes']
-  floorplan = Floorplan.create!(layout_id: json['layout'], layout_version: json['version'], hirise: json['hirise'], windows: json['windows'])
+  hirise = json['hirise']
+  floorplan = Floorplan.create!(layout_id: json['layout'], layout_version: json['version'], hirise: hirise, windows: json['windows'])
 
   json['flats'].each do |flat|
-    flat = Flat.find_by(bed: flat['bed'], floor: flat['floor'], stack: flat['stack'], sqft: flat['sqft'])
+    flat = Flat.joins(:floorplan).where(flats: {floor: flat['floor'], stack: flat['stack']}, floorplans: {hirise: hirise})
     flat.floorplan = floorplan
     flat.save
   end
