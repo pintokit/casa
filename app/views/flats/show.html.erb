@@ -2,8 +2,8 @@
 <% heading "Flat #{@flat.name}" %>
 
 <p>
-  <strong>Floorplan:</strong>
-  <%= @flat.floorplan.name unless @flat.floorplan.nil? %>
+  <strong>Price:</strong>
+  <%= number_to_currency(@flat.listings.last.price, precision: 0) %>
 </p>
 
 <p>
@@ -26,16 +26,12 @@
   <%= @flat.floorplan.window_array unless @flat.floorplan.nil? %>
 </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency(@flat.listings.last.price, precision: 0) %>
-</p>
-
-<p class="text-muted pull-right">
+<p class="text-muted">
   Updated <%= time_ago_in_words(@flat.listings.last.created_at) %> ago
 </p>
 
 <% unless @flat.floorplan.nil? %>
+  <p class="text-muted pull-right"><%= @flat.floorplan.name %></p>
   <p>
     <%= link_to @flat.floorplan do %>
       <%= image_tag @flat.layout_path, class: 'img-thumbnail' %>
