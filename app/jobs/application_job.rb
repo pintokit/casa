@@ -27,8 +27,8 @@ class ApplicationJob < ActiveJob::Base
       stack = unit['name'].last(2)
       layout = unit['floor_plan']['id'] + unit['type'].last.ord
 
-      flat = Flat.find_or_create_by!(floor: unit['floor'], stack: stack, sqft: unit['square_feet'], bath: unit['bath_count'], bed: unit['bed_count'])
       floorplan = Floorplan.find_or_create_by!(layout_id: layout, hirise: hirise)
+      flat = Flat.create_with(floorplan: floorplan).find_or_create_by!(floor: unit['floor'], stack: stack, sqft: unit['square_feet'], bath: unit['bath_count'], bed: unit['bed_count'])
       current_price = unit['price']
       last_listing = flat.listings.last
 
@@ -37,9 +37,6 @@ class ApplicationJob < ActiveJob::Base
       end
 
       flat.update! is_active: true
-      unless flat.floorplan.present?
-        flat.update! floorplan: floorplan
-      end
     end
   end
 end
