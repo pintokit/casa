@@ -25,7 +25,7 @@ class ApplicationJob < ActiveJob::Base
 
     units_json.each do |unit|
       stack = unit['name'].last(2)
-      layout = unit['floor_plan']['id'] + unit['type'].bytes.sum
+      layout = "#{unit['floor_plan']['id']}#{unit['type'].bytes.sum}"
 
       floorplan = Floorplan.find_or_create_by!(layout_id: layout, hirise: hirise)
       flat = Flat.create_with(floorplan: floorplan).find_or_create_by!(floor: unit['floor'], stack: stack, sqft: unit['square_feet'], bath: unit['bath_count'], bed: unit['bed_count'])
