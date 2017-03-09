@@ -17,7 +17,7 @@ module Api::V1
     def flats
       flats_array = []
       object.flats.each do |f|
-        flats_array.push({'floor': f[:floor], 'stack': f[:stack]})
+        flats_array.push({'bed': f[:bed], 'floor': f[:floor], 'stack': f[:stack], 'sqft': f[:sqft]})
       end
       return flats_array
     end

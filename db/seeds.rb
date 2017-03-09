@@ -18,23 +18,25 @@ def pull_db_seed(url)
   end
 end
 
-flats_json = pull_db_seed(ENV['ALL_FLATS_LISTINGS'])
+flats_listings_json = pull_db_seed(ENV['ALL_FLATS_LISTINGS'])
 
-flats_json.each do |f|
-  flat = Flat.create!(bed: f['attributes']['bed'], bath: f['attributes']['bath'], stack: f['attributes']['stack'], floor: f['attributes']['floor'], sqft: f['attributes']['sqft'], city_view: f['attributes']['city-view'], is_active: false)
+flats_listings_json.each do |flat|
+  json = flat['attributes']
+  flat = Flat.create!(bed: json['bed'], bath: json['bath'], stack: json['stack'], floor: json['floor'], sqft: json['sqft'], city_view: json['city-view'], is_active: false)
 
-  f['attributes']['listings'].each do |l|
-    Listing.create!(flat: flat, price: l['price'], created_at: l['created-at'])
+  json['listings'].each do |listing|
+    Listing.create!(flat: flat, price: listing['price'], created_at: listing['created-at'])
   end
 end
 
 floorplans_json = pull_db_seed(ENV['ALL_FLOORPLANS'])
 
-floorplans_json.each do |h|
-  floorplan = Floorplan.create!(layout_id: h['attributes']['layout'], layout_version: h['attributes']['version'], hirise: h['attributes']['hirise'], windows: h['attributes']['windows'])
+floorplans_json.each do |floorplan|
+  json = floorplan['attributes']
+  floorplan = Floorplan.create!(layout_id: json['layout'], layout_version: json['version'], hirise: json['hirise'], windows: json['windows'])
 
-  h['attributes']['flats'].each do |f|
-    flat = Flat.find_by(floor: f['floor'], stack: f['stack'])
+  json['flats'].each do |flat|
+    flat = Flat.find_by(bed: flat['bed'], floor: flat['floor'], stack: flat['stack'], sqft: flat['sqft'])
     flat.floorplan = floorplan
     flat.save
   end
