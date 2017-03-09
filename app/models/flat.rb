@@ -4,7 +4,7 @@ class Flat < ApplicationRecord
   validates :bed, :bath, :sqft, numericality: { only_integer: true }
 
   def name
-    "#{floor.to_i}#{stack}"
+    floor + stack
   end
 
   def price_score
@@ -42,8 +42,11 @@ class Flat < ApplicationRecord
 
   def layout_path
     if floorplan.hirise['jasper']
-      url = floor + stack
-      "https://www.rentjasper.com/wp-content/uploads/2015/05/Jasper_Web_#{url}.svg"
+      unit = name
+      if floor.length == 1
+        unit = "0" + floor + stack
+      end
+      "https://www.rentjasper.com/wp-content/uploads/2015/05/Jasper_Web_#{unit}.svg"
     else
       floorplan.layout_path
     end

@@ -24,15 +24,11 @@ class ApplicationJob < ActiveJob::Base
     Flat.joins(:floorplan).where(floorplans: {hirise: hirise}).update_all is_active: false
 
     units_json.each do |unit|
-      if unit['floor'].length == 1
-        floor = "0" + unit['floor'].to_s
-      else
-        floor = unit['floor']
-      end
       stack = unit['name'].last(2)
+      layout = unit['floor_plan']['id'] + unit['type'].last.ord
 
-      flat = Flat.find_or_create_by!(floor: floor, stack: stack, sqft: unit['square_feet'], bath: unit['bath_count'], bed: unit['bed_count'])
-      floorplan = Floorplan.find_or_create_by!(layout_id: unit['floor_plan']['id'], layout_version: stack.to_i, hirise: hirise)
+      flat = Flat.find_or_create_by!(floor: unit['floor'], stack: stack, sqft: unit['square_feet'], bath: unit['bath_count'], bed: unit['bed_count'])
+      floorplan = Floorplan.find_or_create_by!(layout_id: layout, hirise: hirise)
       current_price = unit['price']
       last_listing = flat.listings.last
 
