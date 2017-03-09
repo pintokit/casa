@@ -13,11 +13,7 @@ class Floorplan < ApplicationRecord
   end
 
   def name
-    if layout_id.nil?
-      "No Layout"
-    else
-      "#{alph(layout_id.modulo(26*26))}: #{layout_version}"
-    end
+    "#{alph(layout_id.modulo(26*26))}: #{layout_version}"
   end
 
   def window_array
