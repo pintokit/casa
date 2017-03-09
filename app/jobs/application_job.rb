@@ -37,9 +37,6 @@ class ApplicationJob < ActiveJob::Base
       end
 
       flat.update! is_active: true
-      unless flat.floorplan.present?
-        flat.update! floorplan: floorplan
-      end
     end
   end
 end
