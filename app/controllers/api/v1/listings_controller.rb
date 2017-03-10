@@ -1,9 +1,9 @@
 module Api::V1
   class ListingsController < ApiController
-    before_action :set_flat, only: :index
+    before_action :set_flat
 
-    # GET /v1/flats/1/listings
-    def index
+    # GET /v1/listings/1
+    def api
       render json: @flat.listings, each_serializer: ListingSerializer
     end
 
