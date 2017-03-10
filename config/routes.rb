@@ -8,12 +8,10 @@ Rails.application.routes.draw do
 
   scope module: 'api' do
     namespace :v1 do
-      resources :flats, only: :index do
-        resources :listings, only: :index
-      end
       get 'all/:model_name', to: 'all#export'
+      get 'flats/:hirise', to: 'flats#api'
+      get 'listings/:flat_id', to: 'listings#api'
     end
   end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
