@@ -33,5 +33,6 @@ module Api::V1
     def listing_updated_at
       object.listings.last.created_at
     end
+    
   end
 end
