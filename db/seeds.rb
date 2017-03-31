@@ -37,7 +37,7 @@ floorplans_json.each do |floorplan|
   floorplan = Floorplan.create!(layout_id: json['layout'], layout_version: json['version'], hirise: hirise, windows: json['windows'])
 
   json['flats'].each do |flat|
-    flat = Flat.joins(:floorplan).where(flats: {floor: flat['floor'], stack: flat['stack']}, floorplans: {hirise: hirise})
+    flat = Flat.where(floor: flat['floor'], stack: flat['stack'], sqft: flat['sqft'], city_view: flat['city_view'])
     flat.floorplan = floorplan
     flat.save
   end
