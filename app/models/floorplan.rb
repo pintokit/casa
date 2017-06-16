@@ -28,11 +28,11 @@ class Floorplan < ApplicationRecord
     if hirise['nema'] && layout_version.blank?
       "https://www.rentnema.com/img/floorplans/plan/#{layout_id}.jpg"
     elsif hirise['nema']
-      "https://s3-us-west-1.amazonaws.com/flats-nema/#{layout_id}-#{layout_version}.png"
+      "#{ENV['S3_URL']}#{layout_id}-#{layout_version}.png"
     elsif hirise['jasper'] && layout_version.blank?
       flats.first.layout_path
     elsif hirise['jasper']
-      "https://s3-us-west-1.amazonaws.com/flats-nema/#{layout_id}-#{layout_version}.png"
+      "#{ENV['S3_URL']}#{layout_id}-#{layout_version}.png"
     end
   end
 
