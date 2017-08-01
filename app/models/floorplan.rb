@@ -30,7 +30,11 @@ class Floorplan < ApplicationRecord
     elsif hirise['nema']
       "#{ENV['S3_URL']}#{layout_id}-#{layout_version}.png"
     elsif hirise['jasper'] && layout_version.blank?
-      flats.first.layout_path
+      if flats.count == 0
+        "#{ENV['S3_URL']}#{layout_id}-#{layout_version}.png"
+      else
+        flats.first.layout_path
+      end
     elsif hirise['jasper']
       "#{ENV['S3_URL']}#{layout_id}-#{layout_version}.png"
     end
