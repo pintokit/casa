@@ -3,7 +3,7 @@ class FlatsController < ApplicationController
 
   # GET /flats
   def index
-    @flats = Flat.where(bed: params[:bed] ? params[:bed] : 0, is_active: params[:is_active] ? params[:is_active] : true).sort_by(&:value_score).reverse!
+    @flats = Flat.joins(:floorplan).where(bed: params[:bed] ? params[:bed] : 0, is_active: params[:is_active] ? params[:is_active] : true, floorplans: { hirise: :nema }).sort_by(&:value_score).reverse!
   end
 
   # GET /flats/1

@@ -5,7 +5,7 @@ class FloorplansController < ApplicationController
 
   # GET /floorplans
   def index
-    @floorplans = Floorplan.all.order(:layout_id, :layout_version)
+    @floorplans = Floorplan.where(hirise: :nema).order(:layout_id, :layout_version)
   end
 
   # GET /floorplans/1
