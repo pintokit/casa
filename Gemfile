@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
-ruby '2.4.2'
+ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use Puma as the app server
 gem 'puma'
+# Library to optimize and cache expensive computations.
+gem 'bootsnap', require: false
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -24,10 +26,6 @@ gem 'jquery-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 
-# Rails forms made easy
-gem 'simple_form'
-# This gem can help you work fine with Enum feather, I18n and simple_form
-gem 'enum_help'
 # Simplifies using Chart.js in Rails views
 gem 'chartjs-ror'
 
