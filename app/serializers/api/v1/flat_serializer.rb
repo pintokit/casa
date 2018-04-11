@@ -1,6 +1,6 @@
 module Api::V1
   class FlatSerializer < ActiveModel::Serializer
-    attributes :identifier, :hirise, :floor, :stack, :bed, :bath, :sqft, :is_active, :windows, :city_view, :floorplan_url, :price, :listing_updated_at
+    attributes :identifier, :hirise, :floor, :stack, :bedroom, :bathroom, :square_feet, :is_active, :windows, :city_view, :floor_plan, :listings
 
     def identifier
       object.id
@@ -14,6 +14,18 @@ module Api::V1
       object.floor.to_i
     end
 
+    def bedroom
+      object.bed
+    end
+
+    def bathroom
+      object.bath
+    end
+
+    def square_feet
+      object.sqft
+    end
+
     def windows
       object.floorplan.window_array unless object.floorplan.nil?
     end
@@ -22,17 +34,17 @@ module Api::V1
       object.city_view
     end
 
-    def floorplan_url
+    def floor_plan
       object.floorplan.layout_path unless object.floorplan.nil?
     end
 
-    def price
-      object.listings.last.price
+    def listings
+      listings_array = []
+      object.listings.each do |l|
+        listings_array.push({'price': l[:price], 'created-at': l[:created_at]})
+      end
+      return listings_array
     end
 
-    def listing_updated_at
-      object.listings.last.created_at
-    end
-    
   end
 end
