@@ -10,8 +10,6 @@ gem 'bootsnap', require: false
 
 # Use postgresql as the database for Active Record
 gem 'pg'
-# Use Redis adapter to run Action Cable in production
-gem 'redis'
 # Serialize your ActiveRecord objects into the desired response JSON
 gem 'active_model_serializers'
 
