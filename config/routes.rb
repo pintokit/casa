@@ -12,6 +12,6 @@ Rails.application.routes.draw do
       get 'flats/:hirise', to: 'flats#api'
       get 'listings/:flat_id', to: 'listings#api'
     end
+    
   end
-
 end

@@ -1,7 +1,7 @@
 module Api::V1
   class FlatsController < ApiController
 
-    # GET /v1/flats
+    # GET /v1/flats/:hirise
     def api
       case params[:hirise]
       when 'nema'
