@@ -4,7 +4,7 @@ development:
 test:
   adapter: async
 
-# production:
-#   adapter: redis
-#   url: <%= ENV.fetch("REDIS_URL") %>
-#   channel_prefix: casa_production
+production:
+  adapter: redis
+  url: <%= ENV.fetch("REDIS_URL") %>
+  channel_prefix: casa_production
