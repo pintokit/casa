@@ -5,5 +5,5 @@ task :pull_listings => :environment do
   JsonListingJob.new(:nema, ENV['NEMA_URL'], 1).perform_now
   JsonListingJob.new(:nema, ENV['NEMA_URL'], 2).perform_now
   JsonListingJob.new(:jasper, ENV['JASPER_URL'], nil).perform_now
-  puts "Listings pulled successfully."
+  puts "New listings pulled successfully."
 end

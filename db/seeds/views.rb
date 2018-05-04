@@ -1,3 +1,5 @@
+puts "Updating flat city_view..."
+
 # South Tower facing Mission St.
 Flat.joins(:floorplan).where(flats: {floor: (16..23).to_a, stack: (26..32).to_a}, floorplans: {hirise: :nema}).update_all city_view: 'Unobstructed'
 
