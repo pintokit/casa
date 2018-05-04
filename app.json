@@ -2,7 +2,7 @@
   "name": "casa",
   "description": "Flat listings tracker",
   "scripts": {
-    "postdeploy": "rake db:schema:load && rake db:seed && rake pull_listings"
+    "postdeploy": "rake db:schema:load && rake db:seed:history && rake pull_listings"
   },
   "env": {
     "ALL_FLATS_LISTINGS": {
