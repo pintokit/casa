@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2017_03_05_205531) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "flats", force: :cascade do |t|
+  create_table "flats", id: :serial, force: :cascade do |t|
     t.integer "floorplan_id"
     t.integer "bed"
     t.integer "bath"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2017_03_05_205531) do
     t.index ["floorplan_id"], name: "index_flats_on_floorplan_id"
   end
 
-  create_table "floorplans", force: :cascade do |t|
+  create_table "floorplans", id: :serial, force: :cascade do |t|
     t.integer "layout_id"
     t.jsonb "windows"
     t.datetime "created_at", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2017_03_05_205531) do
     t.integer "hirise"
   end
 
-  create_table "listings", force: :cascade do |t|
+  create_table "listings", id: :serial, force: :cascade do |t|
     t.integer "flat_id"
     t.integer "price"
     t.datetime "created_at", null: false
