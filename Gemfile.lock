@@ -243,7 +243,7 @@ DEPENDENCIES
   listen
   pg
   puma
-  rails
+  rails (~> 5.2.0)
   rails_real_favicon
   rspec-rails
   sass-rails
