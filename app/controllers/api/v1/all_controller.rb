@@ -5,6 +5,7 @@ module Api::V1
     def export
       case params[:model_name]
       when 'flats'
+        expires_in 1.hours, public: :true
         render json: Flat.all.sort_by(&:value_score).reverse!, each_serializer: AllFlatListingSerializer
       when 'floorplans'
         render json: Floorplan.all.order(:layout_id, :layout_version), each_serializer: AllFloorplanSerializer
