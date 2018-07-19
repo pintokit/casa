@@ -1,9 +1,8 @@
 module Api::V1
   class AllController < ApiController
 
-    # GET /v1/all/:model_name
+    # GET /v1/all/flats/:model_name
     def export
-      expires_in 1.hours, public: :true
       case params[:model_name]
       when 'flats'
         render json: Flat.all.sort_by(&:value_score).reverse!, each_serializer: AllFlatListingSerializer
