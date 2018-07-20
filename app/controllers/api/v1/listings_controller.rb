@@ -4,6 +4,7 @@ module Api::V1
 
     # GET /v1/listings/1
     def api
+      expires_in 1.hours, public: :true
       render json: @flat.listings, each_serializer: ListingSerializer
     end
 
