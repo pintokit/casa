@@ -6,7 +6,7 @@ class ApplicationJob < ActiveJob::Base
     units_json.each do |unit|
       flat = Flat.find_or_create_by!(floor: unit['uf'], stack: unit['un'], sqft: unit['sq'], bath: unit['bathType'], bed: bed_type)
       floorplan = Floorplan.find_or_create_by!(layout_id: unit['fi'], hirise: hirise)
-      current_price = unit['rent'].delete(',').to_i
+      current_price = unit['rent']
       last_listing = flat.listings.last
 
       if flat.listings.empty? || last_listing.price != current_price
