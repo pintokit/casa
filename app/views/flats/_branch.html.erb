@@ -1,0 +1,26 @@
+<script type="text/javascript">
+  var linkData = {
+  campaign: 'content 123',
+  channel: 'facebook',
+  feature: 'dashboard',
+  stage: 'new user',
+  tags: [ 'tag1', 'tag2', 'tag3' ],
+  alias: '',
+  data: {
+    'identifier': <%= @flat.id %>,
+    'floor': <%= @flat.floor.to_i %>,
+    'stack': <%= @flat.stack %>,
+    'bedroom': <%= @flat.bed %>,
+    'bathroom': <%= @flat.bath %>,
+    'square-feet': <%= @flat.sqft %>,
+    'is-active': <%= @flat.is_active %>,
+    'city-view': '<%= @flat.city_view %>',
+    'listings': "<%= @flat.all_listings %>"
+  }
+};
+
+branch.link(linkData, function(err, link) {
+  // attach deep link
+  document.getElementById('anchor').href = link || err;
+});
+</script>

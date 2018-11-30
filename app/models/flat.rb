@@ -52,5 +52,13 @@ class Flat < ApplicationRecord
     end
   end
 
+  def all_listings
+    listings_array = []
+    listings.each do |l|
+      listings_array.push({'price': l[:price], 'created-at': l[:created_at]})
+    end
+    return listings_array
+  end
+
   enum city_view: {'Totally Obstructed': 0, 'Mostly Obstructed': 1, 'Partially Obstructed': 2, 'Unobstructed': 3}
 end

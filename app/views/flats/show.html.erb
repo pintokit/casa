@@ -1,3 +1,4 @@
+<%= render 'branch' %>
 <% title @flat.name %>
 <% heading "Flat #{@flat.name}" %>
 
@@ -38,6 +39,8 @@
     <% end %>
   </p>
 <% end %>
+
+<%= link_to 'Show Listing in App', '#', id: 'anchor', class:'btn btn-block btn-default' %>
 
 <%= link_to 'History', flat_listings_path(@flat), class:'btn btn-block btn-default' %>
 
