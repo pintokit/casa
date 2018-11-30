@@ -39,11 +39,7 @@ module Api::V1
     end
 
     def listings
-      listings_array = []
-      object.listings.each do |l|
-        listings_array.push({'price': l[:price], 'created-at': l[:created_at]})
-      end
-      return listings_array
+      object.all_listings
     end
 
   end
