@@ -1,21 +1,23 @@
 <script type="text/javascript">
   var linkData = {
-  campaign: 'content 123',
-  channel: 'facebook',
-  feature: 'dashboard',
-  stage: 'new user',
-  tags: [ 'tag1', 'tag2', 'tag3' ],
-  alias: '',
-  data: {
+    data: {
     'identifier': <%= @flat.id %>,
     'floor': <%= @flat.floor.to_i %>,
-    'stack': <%= @flat.stack %>,
+    'stack': '<%= @flat.stack %>',
     'bedroom': <%= @flat.bed %>,
     'bathroom': <%= @flat.bath %>,
     'square-feet': <%= @flat.sqft %>,
     'is-active': <%= @flat.is_active %>,
     'city-view': '<%= @flat.city_view %>',
-    'listings': "<%= @flat.all_listings %>"
+    'floor-plan': '<%= @flat.layout_path %>',
+    'listings': [
+    <% @flat.listings.each do |listing| %>
+    {
+      'price': <%= listing.price %>,
+      'created-at': "<%= listing.created_at %>"
+    },
+    <% end %>
+    ]
   }
 };
 
