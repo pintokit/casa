@@ -8,7 +8,9 @@
     'bathroom': <%= @flat.bath %>,
     'square-feet': <%= @flat.sqft %>,
     'is-active': <%= @flat.is_active %>,
-    'city-view': '<%= @flat.city_view %>',
+    <% unless @flat.city_view.blank? %>
+      'city-view': '<%= @flat.city_view.nil? %>',
+    <% end %>
     'floor-plan': '<%= @flat.layout_path %>',
     'listings': [
     <% @flat.listings.each do |listing| %>
