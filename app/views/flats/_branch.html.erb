@@ -9,7 +9,7 @@
     'square-feet': <%= @flat.sqft %>,
     'is-active': <%= @flat.is_active %>,
     <% unless @flat.city_view.blank? %>
-      'city-view': '<%= @flat.city_view.nil? %>',
+      'city-view': '<%= @flat.city_view %>',
     <% end %>
     'floor-plan': '<%= @flat.layout_path %>',
     'listings': [
